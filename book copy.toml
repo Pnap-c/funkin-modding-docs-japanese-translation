@@ -1,6 +1,7 @@
 [book]
 authors = ["The Funkin' Crew Inc.", "EliteMasterEric", "Pi"]
 language = "ja"
+multilingual = false
 src = "src"
 title = "Friday Night Funkin' Modding ドキュメント 日本語版 (非公式)"
 
