@@ -5,4 +5,4 @@
 **日本語版は非公式です。**
 
 # ドキュメントのソースコード
-本書の生成元となるソースファイルは、[GitHub](https://github.com/FunkinCrew/funkin-modding-docs) で公開されています。
+本書の生成元となるソースファイルは、[GitHub](https://github.com/Pnap-c/funkin-modding-docs-japanese-translation/) で公開されています。
