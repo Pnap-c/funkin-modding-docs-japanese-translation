@@ -1,6 +1,6 @@
 # Funkin' Modding Docs
 
-## [ここを押してWikiを見よう](https://funkincrew.github.io/funkin-modding-docs/)
+## [ここを押してWikiを見よう](https://pnap-c.github.io/funkin-modding-docs-japanese-translation/)
 
 ## コントリビューション
 
