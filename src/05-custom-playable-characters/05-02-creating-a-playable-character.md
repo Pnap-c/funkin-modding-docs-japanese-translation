@@ -1,6 +1,6 @@
-# Creating a Playable Character
+# プレイアブルキャラクターの作成
 
-A custom playable character requires creating a new JSON file in the `data/characters` folder. Below is an example of Pico's character data file, from `assets/data/players/pico.json`[^picosource]
+カスタムプレイアブルキャラクターを作成するには、`data/characters`フォルダ内に新しいJSONファイルを作成する必要があります。以下は、`assets/data/players/pico.json`[^picosource]にあるPicoのキャラクターデータファイルの例です。
 
 ```json
 {
@@ -157,69 +157,69 @@ A custom playable character requires creating a new JSON file in the `data/chara
 }
 ```
 
-The available fields are:
-- `version`: The version number for the Playable Character data file format. Leave this at `1.0.0`.
-- `name`: The readable name for the character, used internally.
-- `ownedCharacters`: The list of [Characters](../03-custom-characters/03-00-custom-characters.md) this character owns.
-    - When determining which songs to display in Freeplay, the game checks for any songs where the player character is in this list and displays those. Songs where the player character is in another array are not displayed.
-- `showUnownedChars`: If this value is `true`, then songs whose player character is not in any `ownedCharacters` list will be displayed for this character.
-- `unlocked`: Whether the character is unlocked.
-    - Create a scripted class for this playable character and override `isUnlocked():Bool` to make this conditional. See [Scripted Playable Characters](21-scripted-classes\21-10-scripted-playable-characters.md)
-- `freeplayStyle`: The ID for a Freeplay style to display.
-    - You can use `"bf"` here to use Boyfriend's Freeplay style as a default, or create a new JSON file in the `data/ui/freeplay/styles` folder (copy the Pico one and edit that).
-- `freeplayDJ`: Data for how the character displays as the DJ in the Freeplay menu.
-- `charSelect`: Data for how the character displays in the Character Select menu.
-- `results`: Data for how the character displays in the Results screen.
+利用可能なフィールドは以下の通りです：
+- `version`: プレイアブルキャラクターデータファイル形式のバージョン番号。`1.0.0` のままにしておいてください。
+- `name`: キャラクターの読みやすい名前（内部で使用）。
+- `ownedCharacters`: このキャラクターが所有する[キャラクター](../03-custom-characters/03-00-custom-characters.md) のリスト。
+    - フリープレイで表示する楽曲を決定する際、ゲームはこのリストにプレイヤーキャラクターが含まれる楽曲をチェックし、それらを表示します。プレイヤーキャラクターが別の配列に含まれる楽曲は表示されません。
+- `showUnownedChars`: この値が `true` の場合、プレイヤーキャラクターがどの `ownedCharacters` リストにも含まれない楽曲がこのキャラクターに表示されます。
+- `unlocked`: キャラクターがアンロックされているかどうか。
+    - このプレイアブルキャラクター用にスクリプトクラスを作成し、`isUnlocked():Bool` をオーバーライドして条件付きにします。詳細は[スクリプト化されたプレイアブルキャラクター](21-scripted-classes\21-10-scripted-playable-characters.md)を参照してください。
+- `freeplayStyle`: 表示するフリープレイスタイルのID。
+    - デフォルトでボーイフレンドのフリープレイスタイルを使用するには`「bf」`を指定するか、`data/ui/freeplay/styles`フォルダに新規JSONファイルを作成（Pico用ファイルをコピーして編集）。
+- `freeplayDJ`: フリープレイメニューでDJとしてキャラクターが表示される際のデータ。
+- `charSelect`: キャラクター選択メニューでの表示データ。
+- `results`: 結果画面での表示データ。
 
-Freeplay DJ data is structured like so:
-- `assetPath`: The folder where the Animate Atlas for this character is located, relative to the `images/` folder.
-    - Note that Sparrow atlases are not supported for Freeplay animations.
-- `animations`: A list of animation data for the character.
-    - Valid animation names include `intro` `idle` `idleEasterEgg` `confirm` `fistPump` `loss` `charSelect` and `
-- `charSelect`: A structured data object containing:
-    - `transitionDelay`: A duration (in seconds) between when the character's transition to Character Select starts and the camera starts to fade.
-- `fistPump`: A structured data object containing:
-    - `introStartFrame` The frame number in the `fistPump` animation where the intro animation (which loops until the rank slams down) starts.
-    - `introEndFrame` The frame number in the `fistPump` animation where the intro animation ends.
-    - `loopStartFrame` The frame number in the `fistPump` animation where the follow-up animation starts.
-    - `loopEndFrame` The frame number in the `fistPump` animation where the follow-up animation ends.
-        - Use `-1` to use the last frame of the specified frame label.
-    - `introBadStartFrame` The frame number in the `loss` animation where the intro animation starts.
-    - `introBadEndFrame` The frame number in the `loss` animation where the intro animation ends.
-    - `loopBadStartFrame` The frame number in the `loss` animation where the follow-up animation starts.
-    - `loopBadEndFrame` The frame number in the `loss` animation where the follow-up animation ends.
+フリープレイDJデータは以下のように構成されています：
+- `assetPath`: このキャラクターのアニメーションアトラスが配置されているフォルダ（`images/`フォルダからの相対パス）。
+    - フリープレイアニメーションではスパーロウアトラスはサポートされていません。
+- `animations`: キャラクターのアニメーションデータの一覧。
+    - 有効なアニメーション名: `intro` `idle` `idleEasterEgg` `confirm` `fistPump` `loss` `charSelect` および `
+- `charSelect`: 以下の構造化データオブジェクト:
+    - `transitionDelay`: キャラクターがキャラクター選択画面へ遷移し始めてから、カメラがフェードアウトを開始するまでの時間（秒単位）。
+- `fistPump`: 以下の構造化データオブジェクトを含む:
+    - `introStartFrame` `fistPump` アニメーション内でイントロアニメーション（ランクが叩きつけられるまでループする）が開始されるフレーム番号。
+    - `introEndFrame`: `fistPump` アニメーション内でイントロアニメーションが終了するフレーム番号。
+    - `loopStartFrame`: `fistPump` アニメーション内でフォローアップアニメーションが開始するフレーム番号。
+    - `loopEndFrame` `fistPump` アニメーション内でフォローアップアニメーションが終了するフレーム番号。
+        - 指定したフレームラベルの最終フレームを使用するには `-1` を指定。
+    - `introBadStartFrame` `loss` アニメーション内でイントロアニメーションが開始するフレーム番号。
+    - `introBadEndFrame` イントロアニメーションが終了する`loss`アニメーション内のフレーム番号。
+    - `loopBadStartFrame` フォローアップアニメーションが開始する`loss`アニメーション内のフレーム番号。
+    - `loopBadEndFrame` フォローアップアニメーションが終了する`loss`アニメーション内のフレーム番号。
 
-Character Select data is structured like so:
-- `position`: The preferred grid square for the character in the Character Select grid.
-    - `0` represents the top left, `3` represents the middle left, and `8` represents the bottom right.
-    - Characters are evaluated alphabetically, and if the slot is already occupied, they will be shifted over until they fit.
-    - At time of writing (v0.5.1) only 9 total characters can fit in the grid.
-- `gf`: (NEW with v0.5.1) A structured data object containing:
-    - `assetPath`: The folder where the Animate Atlas for this character is located, relative to the `images/` folder.
-        - Note that Sparrow atlases are not supported.
-    - `animInfoPath`: A path to a Flash JSFL file describing character sliding movement.
-    - `visualizer`: Whether the character is hooked up to display a visualizer (like Nene's ABot).
-        - Check the Nene Character Select FLA to see how to implement this.
+キャラクター選択データは以下のように構成されています：
+- `position`: キャラクター選択グリッドにおけるキャラクターの優先配置位置。
+    - `0`は左上、`3`は左中央、`8`は右下を表します。
+    - キャラクターはアルファベット順に評価され、スロットが既に埋まっている場合、収まるまで横方向にシフトされます。
+    - 執筆時点（v0.5.1）ではグリッドに合計9キャラクターまで配置可能。
+- `gf`: (v0.5.1で新規追加) 以下の構造化データオブジェクトを含む:
+    - `assetPath`: このキャラクターのAnimate Atlasが配置されているフォルダ（`images/`フォルダからの相対パス）。
+        - Sparrowアトラスは非対応に注意。
+    - `animInfoPath`: キャラクターのスライド動作を記述したFlash JSFLファイルへのパス。
+    - `visualizer`: ビジュアライザー（例：NeneのABot）を表示するかどうか。
+        - 実装方法についてはNeneキャラクター選択FLAを参照してください。
 
-Results data is structured like so:
-- `music`: A structured data object containing:
-    - `PERFECT_GOLD`: The path to a music track in the `music/` folder. Played during the Perfect rank animation with all SICKs.
-    - `PERFECT`: The path to a music track in the `music/` folder. Played during the Perfect rank animation.
-    - `EXCELLENT`: The path to a music track in the `music/` folder. Played during the Excellent rank animation.
-    - `GREAT`: The path to a music track in the `music/` folder. Played during the Great rank animation.
-    - `GOOD`: The path to a music track in the `music/` folder. Played during the Good rank animation.
-    - `SHIT`: The path to a music track in the `music/` folder. Played during the Loss rank animation.
-    - Make sure to include a metadata file in the folder to tell the game what BPM the song is, and how to loop it.
-    - Include a variation of the track with the suffix `-intro.ogg` to play that track once before playing the main music track.
-- `perfect`: An array of animation data structures, describing the animation played when the player gets a Perfect rank.
-    - Data is in the form of an array of animation objects.
-    - You can use Sparrow animations or `animateatlas` sprites. Use `renderType` to tell the game which one to use.
-    - Use `loopFrame` to tell the game which frame to start looping at, or set `looped` to `"false"` to just play the animation once.
-- `excellent`: Data for the animation played when the player gets a Excellent rank.
-- `great`: Data for the animation played when the player gets a Great rank.
-- `good`: Data for the animation played when the player gets a Good rank.
-- `loss`: Data for the animation played when the player gets a Loss rank.
-- `perfectGold`: (NEW with v0.5.1) Data for the animation played when the player gets a Perfect rank with all SICKs.
-    - In the base game, this is just the same data as `perfect`, but you can make it different if you like.
+結果データは以下の構造です：
+- `music`: 以下の構造を持つデータオブジェクト：
+    - `PERFECT_GOLD`: `music/`フォルダ内の音楽トラックへのパス。全SICK達成時のPerfectランクアニメーション中に再生。
+    - `PERFECT`: `music/`フォルダ内の音楽トラックへのパス。Perfectランクアニメーション中に再生。
+    - `EXCELLENT`: `music/`フォルダ内の音楽トラックへのパス。Excellentランクのアニメーション中に再生されます。
+    - `GREAT`: `music/`フォルダ内の音楽トラックへのパス。Greatランクのアニメーション中に再生されます。
+    - `GOOD`: `music/`フォルダ内の音楽トラックへのパス。Goodランクのアニメーション中に再生されます。
+    - `SHIT`: `music/`フォルダ内の音楽トラックへのパス。Lossランクアニメーション中に再生される。
+    - 楽曲のBPMやループ方法をゲームに伝えるため、フォルダ内にメタデータファイルを必ず含めること。
+    - メイン楽曲再生前に一度再生されるよう、`-intro.ogg`サフィックス付きの楽曲バリエーションを含めること。
+- `perfect`: プレイヤーがPerfectランクを獲得した際に再生されるアニメーションを記述する、アニメーションデータ構造の配列。
+    - データはアニメーションオブジェクトの配列形式。
+    - Sparrowアニメーションまたは`animateatlas`スプライトを使用可能。`renderType`でどちらを使用するか指定。
+    - `loopFrame` でループ開始フレームを指定するか、`looped` を `「false」` に設定してアニメーションを1回だけ再生します。
+- `excellent`: プレイヤーがExcellentランクを獲得した際に再生されるアニメーションのデータ。
+- `great`: プレイヤーがGreatランクを獲得した際に再生されるアニメーションのデータ。
+- `good`: プレイヤーがGoodランクを獲得した際に再生されるアニメーションのデータ。
+- `loss`: プレイヤーがLossランクを獲得した際に再生されるアニメーションのデータ。
+- `perfectGold`: (v0.5.1で新規追加) プレイヤーが全SICKでPerfectランクを獲得した際に再生されるアニメーションのデータ。
+    - 基本ゲームでは、これは単に`perfect`と同じデータですが、必要に応じて異なるデータにすることも可能です。
 
 [^picosource]: <https://github.com/FunkinCrew/funkin.assets/blob/main/preload/data/players/pico.json>

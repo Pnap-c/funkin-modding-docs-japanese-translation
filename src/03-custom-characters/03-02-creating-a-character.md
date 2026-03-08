@@ -1,7 +1,6 @@
-# Creating a Character
+# キャラクターの作成
 
-A custom character requires creating a new JSON file in the `data/characters` folder. Below is an example 
-of Girlfriend's character data file, from `assets/data/characters/gf.json`[^gfsource]
+カスタムキャラクターを作成するには、`data/characters`フォルダ内に新しいJSONファイルを作成する必要があります。以下は、`assets/data/characters/gf.json`[^gfsource]にあるガールフレンドのキャラクターデータファイルの例です。
 
 ```json
 {
@@ -87,80 +86,80 @@ of Girlfriend's character data file, from `assets/data/characters/gf.json`[^gfso
     }
   ]
 }
+
 ```
+使用可能なフィールドは次のとおりです:
+- `version`: キャラクターデータのファイル形式のバージョン番号。`1.0.0` のままにしておきます。
+- `name`: キャラクターの表示名。Chart Editor などで使用されます。
+- `renderType`: レンダータイプ。`sparrow`、`packer`、`animateatlas`、`multisparrow` のいずれか。
+- `assetPath`: このキャラクターで使用するメインのアセットパス。MODフォルダ内の `images` ディレクトリからの相対パスです。
+  - `sparrow` アセットタイプでは、拡張子を除いた `xml` と `png` が置かれているパスを指定します。
+  - `packer` アセットタイプでは、拡張子を除いた `txt` と `png` が置かれているパスを指定します。
+  - `animateatlas` アセットタイプでは、`Animation.json` と任意のスプライトマップが置かれているフォルダを指定します。
+  - `multisparrow` アセットタイプでは、メインの Sparrow スプライトシートがあるパスを指定します。メイン以外の Sparrow スプライトシートを使用する各アニメーションには、そのアニメーション個別に `assetPath` キーを追加してください。
+- `scale`（現在バグあり）: 元のサイズに対するキャラクターの大きさを指定します。例: `2.0` でスプライトが2倍になります。省略可、既定は `1.0`。
+- `healthIcon`: ゲーム内で表示する体力アイコンのデータ。たとえば Boyfriend は当然 Boyfriend の体力アイコンを使います。省略可、ID はキャラクターの ID を既定とします。
+- `death`: キャラクターが `0` の体力になったときに使用するデス画面のデータ。省略可、特定のオブジェクトは既定になりません。
+- `offsets`: キャラクターの位置に対するグローバルオフセット（ピクセル単位）。省略可、既定は `[0, 0]`。
+  - 2つの小数値の配列を使用し、1つ目が水平方向、2つ目が垂直方向の位置です。
+- `cameraOffsets`: キャラクターにフォーカスしている間、カメラをどれだけずらすか。省略可、既定値はキャラクターに直接フォーカスします。
+  - 2つの小数値の配列を使用し、1つ目が水平方向、2つ目が垂直方向の位置です。
+- `isPixel`: このキャラクターのテクスチャスムージングを無効にするかどうか。省略可、既定は `false`。
+- `danceEvery`: キャラクターが待機アニメーションを再生する頻度（拍）。省略可、既定は `1`。
+  - この数値を大きくすると、キャラクターのダンス頻度が下がります。
+- `flipX`: ゲーム内でスプライト全体を水平方向に反転するかどうか。プレイアブルにもなるキャラクター（Pico など）に便利です。省略可、既定は `false`。
+- `startingAnimation`: キャラクターが最初に読み込まれたときに再生するアニメーション。省略可、既定は `idle`。
+- `singTime`: キャラクターがノートを離した後も歌い続ける時間（ステップ数）。省略可、既定は `8`。
+  - セクション終了後にポーズを長く取りすぎる場合は、この数値を下げてください。
+  - 歌唱アニメの途中で待機アニメーションに戻ってしまう場合は、この数値を上げてください。
+- `animations`: キャラクターのアニメーションデータオブジェクトの一覧。
 
-The available fields are:
-- `version`: The version number for the Character data file format. Leave this at `1.0.0`.
-- `name`: The readable name for the character, used in places like the Chart Editor.
-- `renderType`: The render type. One of `sparrow`, `packer`, `animateatlas`, `multisparrow`.
-- `assetPath`: The main asset path to use for this character, relative to the `images` directory in your mod folder.
-  - For the `sparrow` asset type, this must point to the path where the `xml` and `png` are located, without the file extension.
-  - For the `packer` asset type, this must point to the path where the `txt` and `png` are located, without the file extension.
-  - For the `animateatlas` asset type, this must point to the folder where the `Animation.json` and any spritemaps are located.
-  - For the `multisparrow` asset type, point to the path where your main Sparrow spritesheet is located. On each animations which uses a different Sparrow spritesheet from the main one, add the `assetPath` key to that specific animation.
-- `scale` *(currently buggy)*: Specify the size of the character relative to the original size. For example, `2.0` makes the sprite twice as big. Optional, defaults to `1.0`.
-- `healthIcon`: Data for the health icon to display in-game. For example, Boyfriend will obviously use Boyfriend's health icon. Optional, defaults its ID to character's ID.
-- `death`: Data for the death screen to use, when the character reaches `0` health. Optional, doesn't default to a specific object.
-- `offsets`: The global offset to the character's position, in pixels. Optional, defaults to `[0, 0]`.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `cameraOffsets`: The amount to offset the camera by while focusing on the character. Optional, default value focuses on the character directly.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `isPixel`: Specify whether to disable texture smoothing for the character. Optional, defaults to `false`.
-- `danceEvery`: The frequency at which the character will play its idle animation, in beats. Optional, defaults to `1`.
-  - Increasing this number will make the character dance less often.
-- `flipX`: Whether to flip the whole sprite horizontally in-game. Useful for characters that could also be played (Pico). Optional, defaults to `false`.
-- `startingAnimation`: The animation for the character to play when they are first loaded in. Optional, defaults to `idle`.
-- `singTime`: The amount of time, in steps, for a character to keep singing after they let go of a note. Optional, defaults to `8`.
-  - Decrease this if the character seems to hold their poses for too long after their section is done.
-  - Increase this if the character resets to the idle animation in the middle of their singing animations.
-- `animations`: A list of animation data objects for the character.
+Health Icon のデータ構造は次のとおりです:
+  - `id`: 体力アイコンに使用する ID。既定はキャラクターの ID。
+  - `scale`: 体力アイコンの元サイズに対する拡大率。例: `2.0` でスプライトが2倍。省略可、既定は `1.0`。
+  - `flipX`: 体力アイコン全体を水平方向に反転するかどうか。省略可、既定は `false`。
+  - `isPixel`: このキャラクターの体力アイコンに対してテクスチャスムージングを無効にするかどうか。省略可、既定は `false`。
+  - `offsets`: 体力アイコンのオフセット（ピクセル単位）。省略可、既定は `[0, 0]`。
+    - 2つの小数値の配列を使用し、1つ目が水平方向、2つ目が垂直方向の位置です。
 
-Health Icon data is structured like so:
-  - `id`: The ID to use for the health icon, defaults to character's ID.
-  - `scale`: Specify the size of the health icon relative to the original size. For example, `2.0` makes the sprite twice as big. Optional, defaults to `1.0`.
-  - `flipX`: Whether to flip the whole sprite horizontally in-game. Optional, defaults to `false`.
-  - `isPixel`: Specify whether to disable texture smoothing for this characters health icon. Optional, defaults to `false`.
-  - `offsets`: The offset of the health icon, in pixels. Optional, defaults to `[0, 0]`.
-    - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
+Death データの構造は次のとおりです:
+  - `cameraOffsets`: このキャラクターの死亡時にフォーカスする際、カメラをどれだけずらすか。省略可、既定は `[0, 0]`。
+    - 既定値はキャラクターのグラフィックの中点にフォーカスします。
+    - 2つの小数値の配列を使用し、1つ目が水平方向、2つ目が垂直方向の位置です。
+  - `cameraZoom`: このキャラクターの死亡時にフォーカスする際のカメラのズーム量。省略可、既定は `1`。
+  - `preTransitionDelay`: キャラクターが `0` の体力に達してからデスアニメーションが再生されるまでの遅延。省略可、既定は `0`。
 
-Death data is structured like so:
-  - `cameraOffsets`: The amount to offset the camera by while focusing on this character as they die. Optional, defaults to `[0, 0]`.
-    - Default value focuses on the character's graphic midpoint.
-    - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-  - `cameraZoom`: The amount to zoom the camera by while focusing on this character as they die. Optional, defaults to `1`.
-  - `preTransitionDelay`: The delay between when the character reaches `0` health and when the death animation plays. Optional, defaults to `0`.
+アニメーションデータの構造は次のとおりです:
+- `name`: ゲームが使用する内部アニメーション名。
+- `prefix`: スプライトシートで指定されたアニメーション名。
+  - Sparrow または Packer の場合、データファイル内で各フレームセットの名前を確認し、末尾のフレーム番号を除いたものを prefix として使用します。
+  - Animate Atlas の場合、再生したいアニメーションのフレームラベルまたはシンボル名のいずれかを使用します。
+- `offsets`: いくつかのアニメーションは、待機アニメーション（idle）に対する位置補正が必要な場合があります。
+  - 2 つの小数値の配列を使用します。1 つ目が水平方向、2 つ目が垂直方向の位置です。
+- `looped`: ゲーム内でこのアニメーションをループするかどうか。false の場合、アニメーションは終了時に一時停止し、ゲームがキャラクターに別の動作を命じるまで停止します。
+- `flipX`: ゲーム内でこのアニメーションのスプライトを水平方向に反転するかどうか。
+- `flipY`: ゲーム内でこのアニメーションのスプライトを垂直方向に反転するかどうか。
+- `frameRate`: フレームレート値。デフォルトは `24`。
+- `frameIndices`: 任意。特定の prefix から、このアニメーションで使用するフレーム番号（フレーム 0 から開始！）の配列を指定します。
+  - 例えば、`[0, 1, 2, 3]` を指定すると、指定した prefix の最初の 4 フレームのみをこのアニメーションで使用します。
+- `assetPath`: `multisparrow` アセットタイプ専用。読み込まれるセカンダリの Sparrow スプライトシートを定義し、そのアニメーションのフレームを含めます。
 
-Animation data is structured like so:
-- `name`: The internal animation name for the game to use.
-- `prefix`: The animation name as specified by your spritesheet.
-  - For Sparrow or Packer, check inside the data file to see what each set of frames is named, and use that as the prefix, excluding the frame numbers at the end.
-  - For Animate Atlases, use either the frame label or the symbol name of the animation you want to play.
-- `offsets`: Some animations may need their positions to be corrected relative to the idle animation.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `looped`: Whether to loop this animation in-game. If false, the animation will pause when it ends, until the game commands the character to do something else.
-- `flipX`: Whether to flip the sprites of this animation horizontally in-game.
-- `flipY`: Whether to flip the sprites of this animation vertically in-game.
-- `frameRate`: A frame rate value, defaulting to `24`.
-- `frameIndices`: Optionally specify an array of frame numbers (starting at frame 0!) to use from a given prefix for this animation.
-  - For example, specifying `[0, 1, 2, 3]` will make this animation only use the first 4 frames of the given prefix.
-- `assetPath`: For the `multisparrow` asset type specifically. Define a secondary Sparrow spritesheet which will be loaded, and which contains the frames for this animation.
+ゲームがデフォルトで使用するアニメーション名は次のとおりです:
+- `idle`: 待機アニメーション用。
+- `danceLeft` および `danceRight`: 待機アニメーションを置き換え、2 つのアニメーションを切り替えるダンスアニメーション。
+- `singLEFT`, `singDOWN`, `singUP`, `singRIGHT`: キャラクターがプレイヤーまたは相手のときのノーツ再生アニメーション。
+- `singLEFTmiss`, `singDOWNmiss`, `singUPmiss`, `singRIGHTmiss`: キャラクターがプレイヤーのときのミス時アニメーション。
+- 既存のアニメーション名の末尾に `-hold` を付けた新しい歌唱アニメーションを追加すると、最初のアニメーションが終わった後もキャラクターが歌い続けている間、そのアニメーションを再生します。
+  - 良い例として、`singLEFT` アニメーションをコピーして `singLEFT-hold` アニメーションを作成し、`looped` を true、`frameIndices` を歌唱アニメーションの最後の数フレームに設定できます。
+- 既存のアニメーション名の末尾に `-end` を付けた新しい歌唱アニメーションを追加すると、待機アニメーションに戻る前にそのアニメーションを再生します。
+  - 例えば、`singLEFT-end` アニメーションを定義して、待機アニメーションへきれいに遷移させることができます。
+- 他の名前のアニメーションも追加できますが、それらを再生するにはスクリプト、またはチャートエディタの `Play Animation` 楽曲イベントが必要です。
 
-The animation names the game uses by default are:
-- `idle`: For the idle animation.
-- `danceLeft` and `danceRight`: Supercedes the idle animation with one that toggles between two animations.
-- `singLEFT`, `singDOWN`, `singUP`, `singRIGHT`: The animations for playing notes, when the character is a player or opponent.
-- `singLEFTmiss`, `singDOWNmiss`, `singUPmiss`, `singRIGHTmiss`: The animations for missing notes, when the character is a player.
-- Adding a new singing animation with the name of an existing animation with `-hold` at the end will play the animation after the first one ends, while the character is still singing.
-  - As a good example, you can copy the `singLEFT` animation to make a `singLEFT-hold` animation, which has `looped` as true and `frameIndices` as the last few frames of the singing animation.
-- Adding a new singing animation with the name of an existing animation with `-end` at the end will play an animation before returning to idle.
-  - For example, you can define a new `singLEFT-end` animation to cleanly transition into the idle animation.
-- You can add other animations by name, but you'll have to play them with a script, or a `Play Animation` song event in the Chart Editor.
+ゲーム開始時、`data/characters` フォルダ内の JSON ファイルを検索して、使用可能なキャラクターの一覧を取得します。これは、後でステージでキャラクターを読み込む際に使用されるデータを事前読み込みするために使われます。
 
-When the game starts, it queries the list of possible characters by searching in the `data/characters` folder for JSON files. This gets used to preload data which is used later when the character is loaded in a stage.
+## 既存キャラクターの置換／リスキン
 
-## Replacing/Reskinning an Existing Character
-
-As a short aside, you can create a JSON with the same filename as an existing character (from the base game, or from a mod if your mod loads after it) and it will replace it. This can be used to create more elaborate reskins for characters, such as ones that use a different render type.
+短い補足として、既存のキャラクター（ベースゲーム、または後から読み込まれる他のMOD）のファイル名と同じ JSON を作成すると、それを置き換えることができます。これにより、異なるレンダータイプを使用するなど、キャラクターのより凝ったリスキンを作成できます。
 
 
 [^gfsource]: <https://github.com/FunkinCrew/funkin.assets/blob/main/preload/data/characters/gf.json>

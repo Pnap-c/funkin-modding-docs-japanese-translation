@@ -1,5 +1,5 @@
-# Creating a Friday Night Funkin' Mod - Custom Characters
+# Friday Night Funkin' MODの作成 - カスタムキャラクター
 
-This chapter will walk you through the process of creating a functioning, fully compatible Friday Night Funkin' mod, using the game's official systems for loading custom content and scripts. Once your mod is complete, you will be able to place it in the `mods` folder in your game install and use its content in-game without overriding the base game content and still maintain compatibility with other mods.
+この章では、カスタムコンテンツとスクリプトを読み込むためのゲームの公式システムを使用して、機能し完全に互換性のあるFriday Night Funkin' MODを作成するプロセスを解説します。MODが完成したら、ゲームインストール先の`mods`フォルダに配置し、ベースゲームのコンテンツを上書きすることなくゲーム内でそのコンテンツを使用でき、他のMODとの互換性も維持できます。
 
-This chapter goes over adding new characters to the game, and using them in a level. If you are looking for adding characters to the character select screen, see [Custom Playable Characters](../05-custom-playable-characters/05-00-custom-playable-characters.md).
+本章では、ゲームに新キャラクターを追加し、ステージで使用する方法について解説します。キャラクター選択画面への追加方法については、[カスタムプレイアブルキャラクター](../05-custom-playable-characters/05-00-custom-playable-characters.md)を参照してください。

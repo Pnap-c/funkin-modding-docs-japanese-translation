@@ -1,26 +1,26 @@
-# Appending Files
+# ファイルへの追加
 
-Adding values to the end of a data file is pretty straight-forward, but it depends on the file type you want to append to.
+データファイルの末尾に値を追加するのは比較的簡単ですが、追加対象のファイルタイプによって異なります。
 
-Create a new file in the `_append` folder of your mod, with a path matching the file you want to append to. For example, to append to `assets/data/introText.txt`, you would place your file at `mods/mymod/_append/data/introText.txt`
+追加対象ファイルのパスに一致するパスで、MODの`_append`フォルダ内に新規ファイルを作成します。例えば`assets/data/introText.txt`に追加する場合、ファイルは`mods/mymod/_append/data/introText.txt`に配置します。
 
-### Appending to TXT Files
+### TXTファイルへの追加
 
-If the file extension of the append file is `.txt`, the contents of the file will be simply appended to the end of the target file.
+追加ファイルの拡張子が`.txt`の場合、ファイルの内容は単純に対象ファイルの末尾に追加されます。
 
-### Appending to CSV/TSV Files
+### CSV/TSVファイルへの追加
 
-If the file extension of the append file is `.csv` or `.tsv`, the rows in the sheet will be added to the end of the target sheet.
+追加ファイルの拡張子が`.csv`または`.tsv`の場合、シート内の行が対象シートの末尾に追加されます。
 
-### Appending to XML Files
+### XMLファイルへの追加
 
-TODO: Fill this out.
+TODO: 内容を記入してください。
 
-### Appending to JSON Files
+### JSONファイルへの追加
 
-If the file extension of the append file is `.json`, the value will be parsed and naively appended to the target data.
+追加対象ファイルの拡張子が `.json` の場合、値が解析され、単純にターゲットデータに追加されます。
 
-For example, given the source file `data/mydata.json`:
+例：ソースファイル `data/mydata.json` がある場合：
 
 ```json
 {
@@ -32,7 +32,7 @@ For example, given the source file `data/mydata.json`:
 }
 ```
 
-We can provide the file `mods/mymod/_append/data/mydata.json`:
+ファイル `mods/mymod/_append/data/mydata.json` を提供できます:
 
 ```json
 {
@@ -43,7 +43,7 @@ We can provide the file `mods/mymod/_append/data/mydata.json`:
 }
 ```
 
-And Polymod will mutate it to get this result:
+そしてPolymodはこれを変化させて、この結果を得ます：
 
 ```jsonc
 {
@@ -59,4 +59,4 @@ And Polymod will mutate it to get this result:
 }
 ```
 
-If you want something more particular, see [Merging into JSON Files](./10-02-merging-files.md#merging-into-json-files) for a more powerful and flexible approach.
+より具体的な方法が必要な場合は、より強力で柔軟なアプローチとして[JSONファイルへのマージ](./10-02-merging-files.md#merging-into-json-files)を参照してください。

@@ -1,23 +1,23 @@
-# Merging
+# マージ
 
-Merging files into a data file is required for more complicated operations, such as inserting data somewhere other than the start of the document, replacing certain data with new data, or even deleting certain data from the document.
+ファイルをデータファイルにマージすることは、より複雑な操作（ドキュメントの先頭以外へのデータ挿入、特定のデータを新しいデータで置き換え、あるいはドキュメントから特定のデータを削除するなど）を行うために必要です。
 
-By using `_merge` files, rather than replacing the data files entirely, you make your mod fully compatible with both changes to the base game and to changes made by other mods. Merge files are applied in mod load order, meaning that multiple mods can make changes to the same file without any conflicts!
+データファイル全体を置き換える代わりに`_merge`ファイルを使用することで、ベースゲームの変更や他のMODによる変更とも完全に互換性を保てます。マージファイルはMODのロード順序で適用されるため、複数のMODが同じファイルに変更を加えても競合は発生しません！
 
-### Merging into TXT Files
+### TXTファイルへのマージ
 **TODO**
 
-### Merging into CSV/TSV Files
+### CSV/TSVファイルへのマージ
 
-CSV and TSV files can be merged as well. In this case, the mod loader will look for any rows in the base file whose first cell matches the same value as those in the merge file, and replace them with the rows from the merge file.
+CSVおよびTSVファイルもマージ可能です。この場合、MODローダーはベースファイル内の行をスキャンし、マージファイルの行と最初のセルの値が一致する行を検出すると、それらをマージファイルの行で置き換えます。
 
-### Merging into XML Files
+### XMLファイルへのマージ
 
-*NOTE: The behavior of Merging XML files may change significantly in the near future.*
+*注意: XMLファイルのマージ動作は近い将来大幅に変わる可能性があります。*
 
-For XML, you must create an XML document containing the desired, values, with additional information to inform Polymod about where to insert it.
+XMLの場合、挿入位置をPolymodに指示する追加情報と共に、必要な値を含むXMLドキュメントを作成する必要があります。
 
-Say you have a big complicated XML file at `data/stuff.xml` with lots of nodes:
+例えば、`data/stuff.xml`に多数のノードを含む複雑なXMLファイルがあるとします:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -28,7 +28,7 @@ Say you have a big complicated XML file at `data/stuff.xml` with lots of nodes:
 </data>
 ```
 
-And you want it to say this instead:
+代わりにこう表示してほしい:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -39,18 +39,18 @@ And you want it to say this instead:
 </data>
 ```
 
-Basically we want to change this one tag from this:
+基本的に、このタグを次のものから変更したいのです：
 
 ```xml
 <mode id="difficulty" values="easy"/>
 ```
 
-to this:
+→これを
 ```xml
 <mode id="difficulty" values="super_hard"/>
 ```
 
-This is the file you would put in `<modroot>/<mergeFolder>/data/stuff.xml`:
+これは`<modroot>/<mergeFolder>/data/stuff.xml`に配置するファイルです：
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
@@ -60,25 +60,25 @@ This is the file you would put in `<modroot>/<mergeFolder>/data/stuff.xml`:
 </data>
 ```
 
-This file contains both data and merge instructions. The `<merge>` child tag tells the mod loader what to do, and will not be included in the final data. The actual payload is just this:
+このファイルにはデータとマージ指示の両方が含まれています。`<merge>`の子タグはMODローダーに何をすべきかを指示するもので、最終データには含まれません。実際のペイロードは次の通りです：
 
 ```xml
 <mode id="difficulty" values="super_hard">
 ```
 
-The `<merge>` tag instructs the mod loader thus:
+`<merge>`タグは、MODローダーに以下の指示を与えます：
 
-* Look for any tags with the same name as my parent (in this case, `<mode>`)
-* Look within said tags for a `key` attribute (in this case, one named `"id"`)
-* Check if the key's value matches what I'm looking for (in this case, `"difficulty"`)
+* 親タグ（この場合は`<mode>`）と同じ名前のタグを探す
+* 該当タグ内で`key`属性（この場合は`「id」`という名前のもの）を探す
+* キーの値が探している値（この場合は`「difficulty」`）と一致するか確認する
 
-As soon as it finds the first match, it stops and merges the payload with the specified tag. Any attributes will be added to the base tag (overwriting any existing attributes with the same name, which in this case changes values from "easy" to just "super_hard", which is what we want). Furthermore, if the payload has child nodes, all of its children will be merged with the target tag as well.
+最初の一致が見つかり次第、検索を停止し、ペイロードを指定されたタグにマージします。属性はすべてベースタグに追加され（同名の既存属性は上書きされます。この例では値が「easy」から「super_hard」に変更されます）、これが目的です。さらに、ペイロードに子ノードがある場合、そのすべての子ノードもターゲットタグにマージされます。
 
-### Merging into JSON Files
+### JSONファイルへのマージ
 
-Merging into JSON files is done using a [JSON Patch](https://jsonpatch.com/) document. (NOTE: This significantly differs from JSON patch files created for v0.4.1 and earlier, which used a different system that honestly kinda sucked).
+JSONファイルへのマージは[JSON Patch](https://jsonpatch.com/)ドキュメントを用いて行います（注：これはv0.4.1以前のバージョン向けに作成されたJSONパッチファイルとは大きく異なります。以前のシステムは正直言ってあまり良くありませんでした）。
 
-Say we have a JSON data file `data/songs/mysong-metadata.json` like below:
+以下のようなJSONデータファイル`data/songs/mysong-metadata.json`があるとします：
 
 ```json
 {
@@ -97,7 +97,7 @@ Say we have a JSON data file `data/songs/mysong-metadata.json` like below:
 }
 ```
 
-We can modify the above data with a document `mods/mymod/_merge/data/songs/mysong-metadata.json`:
+上記のデータは、ドキュメント `mods/mymod/_merge/data/songs/mysong-metadata.json` で変更できます：
 
 ```jsonc
 [
@@ -110,10 +110,10 @@ We can modify the above data with a document `mods/mymod/_merge/data/songs/myson
 ]
 ```
 
-The `op`erations supported are `add`, `remove`, `replace`, `move`, `copy`, and `test`. If any operation in a JSON Patch document fails, all of the modifications in that file will be reverted.
+サポートされている操作は、`add`、`remove`、`replace`、`move`、`copy`、および`test`です。JSON Patchドキュメント内のいずれかの操作が失敗した場合、そのファイル内のすべての変更は元に戻されます。
 
-The `add`, `replace`, and `test` operations require a `value` key (which can be any JSON data, including an array or object), and the `move` and `copy` operations require a `from` key, which is a path value indicating where to move or copy from.
+`add`、`replace`、`test`操作には`value`キー（配列やオブジェクトを含む任意のJSONデータ）が必要であり、`move`および`copy`操作には`from`キー（移動またはコピー元のパス値を示す）が必要です。
 
-The `path` must be a string of either property names or array indexes (starting at 0), starting with and separated by slashes (`/`). For example, `/playData/characters/opponent`.
+`path` は、スラッシュ (`/`) で始まり、スラッシュで区切られたプロパティ名または配列インデックス (0 から始まる) の文字列でなければなりません。例: `/playData/characters/opponent`。
 
-The `path` may also be a JSONPath string, which allows robustly specifying a target path with support for filtering logic. You can read more here: https://goessner.net/articles/JsonPath/
+`path`はJSONPath文字列としても指定可能で、フィルタリングロジックをサポートした堅牢なターゲットパス指定が可能です。詳細は以下を参照してください：https://goessner.net/articles/JsonPath/

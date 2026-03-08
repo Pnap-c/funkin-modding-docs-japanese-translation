@@ -1,16 +1,16 @@
-# Adding Variations to Existing Songs
+# 既存楽曲へのバリエーション追加
 
-Through modding, it is possible to add new variations to existing songs. This is great for adding a new difficulty or remix to an existing song (even if that song is from another mod).
+改造を通じて、既存楽曲に新たなバリエーションを追加することが可能です。これは既存楽曲（他の改造MODの楽曲であっても）に新たな難易度やリミックスを追加するのに最適です。
 
-## Obtaining Required Files
+## 必要ファイルの入手
 
-The first step is to compose a new remix for the song. If you're making a playable character remix, the composer will have to manually make sure the original vocals line up if you want the option to use alternate instrumentals.
+最初のステップは、楽曲用の新たなリミックスを作曲することです。プレイアブルキャラクター向けリミックスを作成する場合、代替Instを使用するオプションを有効にしたいなら、作曲者が手動で元のボーカルと同期させる必要があります。
 
-You then have to chart this remix. When you're done, you should have an `Inst.ogg` file, two `Voices` OGG files, a `metadata.json` and a `chart.json`.
+次に、このリミックスをチャート化します。完了すると、`Inst.ogg`ファイル、2つの`Voices` OGGファイル、`metadata.json`、`chart.json`が得られるはずです。
 
-## Placing the Files
+## ファイルの配置
 
-Next, place the assets in the correct spots in our mod folder! Rename each of the files, adding a variation ID of your choice to the end (so if you're making an erect remixes, rename `Inst.ogg` to `Inst-erect.ogg`):
+次に、MODフォルダ内の適切な場所にアセットを配置します！各ファイル名に任意のバリエーションIDを末尾に追加してリネームしてください（例：erectリミックスを作成する場合、`Inst.ogg`を`Inst-erect.ogg`に変更）：
 
 ```
 -mods
@@ -28,15 +28,15 @@ Next, place the assets in the correct spots in our mod folder! Rename each of th
    |-_polymod_meta.json
 ```
 
-## Registering the Variation in the JSON Data
+## JSONデータへのバリエーション登録
 
-Each chart includes a `songVariations` array, which lets the game know which variations the song has available so it can query their respective metadata files. In order to get the game to load your custom variation, you need to modify the `metadata.json` file for the song's chart, so the game knows that variation exists.
+各チャートには`songVariations`配列が含まれており、これによりゲームは楽曲がどのバリエーションに対応しているかを認識し、それぞれのメタデータファイルを問い合わせることができます。ゲームにカスタムバリエーションを読み込ませるには、その楽曲のチャートの`metadata.json`ファイルを修正し、そのバリエーションが存在することをゲームに認識させる必要があります。
 
-### If the song is from your own mod
+### 楽曲が自作MODの場合
 
-If the base song you're adding the remix to is from your own mod, you can just add the variation to the `metadata.json` for your chart.
+リミックスを追加するベース楽曲が自作MODの場合、そのチャートの`metadata.json`にバリエーションを追加するだけで済みます。
 
-Add your variation ID to the `playData.songVariations` array (creating the key if it doesn't exist).
+`playData.songVariations`配列にバリエーションIDを追加します（キーが存在しない場合は作成してください）。
 
 ```json
 {
@@ -48,11 +48,11 @@ Add your variation ID to the `playData.songVariations` array (creating the key i
 }
 ```
 
-### If the song is from the base game, or a different mod
+### 楽曲がベースゲームまたは別のMODからの場合
 
-If the base song you're adding to is from a different mod, you don't want to replace the underlying data in case it changes. You want to instead apply a JSON Patch to the file (which Polymod provides the ability to do).
+追加対象のベース楽曲が別のMODからのものである場合、変更される可能性のある基盤データを上書きすべきではありません。代わりに、ファイルにJSONパッチを適用する必要があります（Polymodはこの機能を提供します）。
 
-Create a `_merge` folder in your mod folder, then create a file within that directory whose path matches the one you want to patch, like so:
+MODフォルダ内に`_merge`フォルダを作成し、その中にパッチを適用したいファイルのパスに一致するディレクトリを作成します。例：
 
 ```
 -mods
@@ -64,7 +64,7 @@ Create a `_merge` folder in your mod folder, then create a file within that dire
            |-mychart-metadata.json
 ```
 
-Then we apply a simple patch, which adds a new value to the `playData.songVariations` array. Edit the JSON file and add these contents:
+次に、`playData.songVariations`配列に新しい値を追加する簡単なパッチを適用します。JSONファイルを編集し、以下の内容を追加してください：
 
 ```json
 [
@@ -72,10 +72,10 @@ Then we apply a simple patch, which adds a new value to the `playData.songVariat
 ]
 ```
 
-The patching system is very flexible; it works on any JSON file (base game or provided by another mod) and has support for advanced behavior. See [Merging Files](../10-appending-and-merging-files/10-02-merging-files.md) for more information.
+パッチングシステムは非常に柔軟です。あらゆるJSONファイル（基本ゲームまたは他のMODが提供するファイル）に対応し、高度な動作をサポートしています。詳細は[ファイルの結合](../10-appending-and-merging-files/10-02-merging-files.md)を参照してください。
 
-## Conclusion
+## まとめ
 
-Now, when you start the game, your additional variation should be available in-game!
+これでゲームを起動すると、追加したバリエーションがゲーム内で利用可能になっているはずです！
 
-If you created a character remix, make sure the player character for the remix is included in the `ownedCharacters` data for your custom playable character. See [Custom Playable Characters](../05-custom-playable-characters/05-00-custom-playable-characters.md) for more info.
+キャラクターリミックスを作成した場合、そのリミックス用プレイヤーキャラクターがカスタムプレイアブルキャラクターの`ownedCharacters`データに含まれていることを確認してください。詳細は[カスタムプレイアブルキャラクター](../05-custom-playable-characters/05-00-custom-playable-characters.md)を参照してください。

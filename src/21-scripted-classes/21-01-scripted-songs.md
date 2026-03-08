@@ -1,8 +1,8 @@
-# Creating a Friday Night Funkin' Mod - Scripted Songs
+# Friday Night Funkin' MODの作成 - スクリプト付き楽曲
 
-This chapter will walk you through the process of adding a script to a Song, and giving examples of the kind of custom behavior which can be implemented with this functionality.
+この章では、楽曲にスクリプトを追加する手順を解説し、この機能で実装可能なカスタム動作の例を示します。
 
-Start by creating a scripted class file with the `.hxc` extension (in the `mods/mymod/scripts/songs` if you want to keep things organized).
+まず、スクリプト付きクラスファイルを `.hxc` 拡張子で作成します（整理したい場合は `mods/mymod/scripts/songs` 内に配置してください）。
 
 ```haxe
 // Remember to import each class you want to reference in your script!
@@ -21,4 +21,4 @@ class BallisticSong extends Song {
 }
 ```
 
-You can then add override functions to perform custom behavior.
+その後、カスタム動作を実行するためのオーバーライド関数を追加できます。

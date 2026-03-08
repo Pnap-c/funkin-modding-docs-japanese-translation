@@ -1,14 +1,15 @@
-# Creating a Stage
+# ステージの作成
 
-## Stage Assets
+## ステージアセット
 
-The image assets required for a stage should be placed into the `shared/images/` folder within your mod, ideally somewhere organized like a subfolder with the name of the stage.
+ステージに必要な画像アセットは、MOD内の`shared/images/`フォルダに配置してください。理想的には、ステージ名と同じサブフォルダに整理して配置します。
 
-## Stage Data
+## ステージデータ
 
-A custom stage requires creating a new JSON file in the `data/stages` folder
+カスタムステージを作成するには、`data/stages`フォルダ内に新しいJSONファイルを作成する必要があります。
 
-Below is the "Main Stage" json file from Week 1 `assets/data/stages/mainStage.json`[^stagesource]
+以下は第1週の「メインステージ」用jsonファイルです。
+`assets/data/stages/mainStage.json`[^stagesource]
 
 ```json
 {
@@ -62,99 +63,99 @@ Below is the "Main Stage" json file from Week 1 `assets/data/stages/mainStage.js
 
 ```
 
-The available fields are:
-- `version`: The version number for the Stage data file format. Leave this at `1.0.1`.
-- `name`: The readable name for the stage, used in places like the Chart Editor.
-- `cameraZoom`: The default camera zoom level for the stage. Optional, defaults to `1.0`.
-- `props`: An array of props to add to the stage, specifying what sprites should be used and where those sprites should be positioned.
-- `characters`: Data on how characters in the stage should be positioned.
+利用可能なフィールドは以下の通りです：
+- `version`: ステージデータファイル形式のバージョン番号。`1.0.1` のままにしておいてください。
+- `name`: ステージの読みやすい名前。チャートエディタなどで使用されます。
+- `cameraZoom`: ステージのデフォルトカメラズームレベル。オプション、デフォルトは `1.0`。
+- `props`: ステージに追加するプロップの配列。使用するスプライトとそれらの配置位置を指定します。
+- `characters`: ステージ内のキャラクターの配置方法に関するデータ。
 
-Stage prop data is structured like so:
-- `name`: An internal name for this prop. Good for keeping track of things. Keep each prop name unique!
-  - You can access a stage prop in a script using `PlayState.instance.currentStage.getNamedProp(name)`.
-- `assetPath`: The asset used to display the prop. This can be either an image or a color.
-  - To use an image, specify the path relative to the `images` folder in your mod folder.
-  - To use a color, specify a hex code. This creates a 1x1 pixel square of the specified color, which you can resize with the `scale` property.
-- `zIndex`: A value describing the relative position of the prop. Optional, defaults to `0`.
-  - Elements with higher values get placed in front of elements with lower values.
-- `position`: The horizontal and vertical position of the prop, in pixels.
-- `isPixel`: Specify whether to display this image as a pixel prop (disabling texture smoothing). Optional, defaults to `false`.
-- `scale`: Specify the size of the prop relative to the original size. For example, `2.0` makes the sprite twice as big. Defaults to `1.0` if unspecified.
-- `alpha`: Specify the opacity of the prop, with `1.0` being fully opaque and `0.0` being completely transparent. Optional, defaults to `1.0`.
-- `scroll`: Specify how much scroll factor, or how much the prop moves relative to the camera horizontally and vertically. Defaults to `[0.0, 0.0]` if unspecified.
-  - A value of `[0, 0]` causes the prop to not move at all in relation to the camera.
-  - A value of `[1, 1]` causes the prop to move 1-to-1 with the camera. Characters usually have a scroll factor of `[1, 1]`.
-  - A value of `[0, 1]` causes the prop to only move vertically in relation to the camera as focus changes.
-  - A value of `[0.5, 0.5]` causes the prop to move less relative to props configured to move 1-to-1
-  - A value of `[2, 2]` is valid and causes the prop to move 2-to-1 as the camera moves.
-- `animType`: If the prop you choose is animated, specify `sparrow` or `packer` for which animation type you're using.
-  - Most of the game's spritesheets are Sparrow v2 sheets exported from Adobe Animate.
-- `animations`: A list of animation data objects for the stage prop.
-- `startingAnimation`: The animation to play on the prop when the stage starts. If the animation is configured to loop, it will play forever unless a script calls a different one (or `danceEvery` is greater than 0). If unspecified, no animation will play unless a script does so.
-- `danceEvery`: If non-zero, this prop will play an animation every X beats of the song. Defaults to `0.0`, or no bopping.
-  - This tries to play the `idle` animation.
-  - If `danceLeft` and `danceRight ` animations are specified, the game will alternate between these instead.
-  - This value supports precision up to `0.25`, where `0.25` plays the animation four times per beat.
+ステージプロップデータは以下のように構成されています：
+- `name`: このプロップの内部名。管理に便利です。各プロップ名は一意にしてください！
+  - スクリプト内でステージプロップにアクセスするには `PlayState.instance.currentStage.getNamedProp(name)` を使用します。
+- `assetPath`: プロップの表示に使用するアセット。画像または色のいずれかです。
+  - 画像を使用する場合は、MODフォルダ内の`images`フォルダからの相対パスを指定します。
+  - 色を使用する場合は、16進コードを指定します。これにより指定した色の1x1ピクセルの正方形が生成され、`scale`プロパティでサイズ変更が可能です。
+- `zIndex`: プロップの相対的な位置を表す値。オプション、デフォルトは `0`。
+  - 値が大きい要素は、値が小さい要素の前に配置されます。
+- `position`: プロップの水平方向と垂直方向の位置（ピクセル単位）。
+- `isPixel`: この画像をピクセルプロップとして表示するかどうかを指定（テクスチャスムージングを無効化）。オプション、デフォルトは `false`。
+- `scale`: プロップのサイズを元のサイズに対する比率で指定します。例: `2.0` はスプライトを2倍の大きさにする。指定しない場合、デフォルトは `1.0`。
+- `alpha`: プロップの不透明度を指定します。`1.0` は完全な不透明、`0.0` は完全な透明。オプション、デフォルトは `1.0`。
+- `scroll`: プロップがカメラに対して水平方向および垂直方向にどれだけ移動するかを指定します。指定しない場合、デフォルトは `[0.0, 0.0]` です。
+  - `[0, 0]` の値は、プロップがカメラに対して全く移動しないことを意味します。
+  - `[1, 1]` の場合、プロップはカメラと1対1で連動して移動します。キャラクターは通常 `[1, 1]` のスクロール係数を持ちます。
+  - `[0, 1]` の場合、プロップは焦点の変化に応じてカメラに対して垂直方向にのみ移動します。
+  - `[0.5, 0.5]` の値は、1対1で移動するように設定されたプロップに比べて、プロップの移動量を少なくします。
+  - `[2, 2]` の値は有効であり、カメラの移動に対してプロップが2対1で移動します。
+- `animType`: 選択したプロップがアニメーション対応の場合、使用するアニメーションタイプとして`sparrow`または`packer`を指定します。
+  - ゲームのスプライトシートの大半は、Adobe AnimateからエクスポートされたSparrow v2シートです。
+- `animations`: ステージプロップ用のアニメーションデータオブジェクトのリスト。
+- `startingAnimation`: ステージ開始時にプロップで再生するアニメーション。アニメーションがループ設定されている場合、スクリプトで別のアニメーションを呼び出さない限り（または`danceEvery`が0より大きい場合）、永久に再生されます。指定しない場合、スクリプトで再生しない限りアニメーションは再生されません。
+- `danceEvery`: 0以外の場合、このプロパティは曲のXビートごとにアニメーションを再生します。デフォルトは`0.0`（ボッピングなし）です。
+  - `idle`アニメーションを再生しようとします。
+  - `danceLeft`と`danceRight`アニメーションが指定されている場合、代わりにこれらを交互に再生します。
+  - この値は小数点以下2桁（`0.25`）までの精度をサポートし、`0.25`の場合1ビートあたり4回アニメーションを再生します。
 
-Stage prop animation data is structured like so:
-- `name`: The internal animation name for the game to use.
-- `prefix`: The animation name as specified by your spritesheet.
-  - For Sparrow or Packer, check inside the data file to see what each set of frames is named, and use that as the prefix, excluding the frame numbers at the end.
-  - For Animate Atlases, use either the frame label or the symbol name of the animation you want to play.
-- `offsets`: Some animations may need their positions to be corrected relative to the idle animation.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `looped`: Whether to loop this animation in-game. If false, the animation will pause when it ends, until the game commands the character to do something else.
-- `flipX`: Whether to flip the sprites of this animation horizontally in-game.
-- `flipY`: Whether to flip the sprites of this animation vertically in-game.
-- `frameRate`: A frame rate value, defaulting to `24`.
-- `frameIndices`: Optionally specify an array of frame numbers (starting at frame 0!) to use from a given prefix for this animation.
-  - For example, specifying `[0, 1, 2, 3]` will make this animation only use the first 4 frames of the given prefix.
-- `assetPath`: For the `multisparrow` asset type specifically. Define a secondary Sparrow spritesheet which will be loaded, and which contains the frames for this animation.
+ステージプロップのアニメーションデータは以下のように構成されます：
+- `name`: ゲームが使用する内部アニメーション名。
+- `prefix`: スプライトシートで指定されたアニメーション名。
+  - SparrowまたはPackerの場合、データファイル内で各フレームセットの名前を確認し、末尾のフレーム番号を除いた名前をプレフィックスとして使用します。
+  - Animate Atlasesの場合、再生したいアニメーションのフレームラベルまたはシンボル名を使用します。
+- `offsets`: 一部のアニメーションは、アイドルアニメーションに対する位置補正が必要な場合があります。
+  - 2つの小数値の配列を使用します。最初の値が水平位置、2番目の値が垂直位置です。
+- `looped`: ゲーム内でこのアニメーションをループ再生するかどうか。falseの場合、アニメーション終了時に一時停止し、ゲームがキャラクターに別の動作を指示するまで待機します。
+- `flipX`: ゲーム内でこのアニメーションのスプライトを水平方向に反転させるかどうか。
+- `flipY`: ゲーム内でこのアニメーションのスプライトを垂直方向に反転させるかどうか。
+- `frameRate`: フレームレート値。デフォルトは `24`。
+- `frameIndices`: オプションで、このアニメーションに使用する指定されたプレフィックスからのフレーム番号の配列（フレーム0から開始！）を指定します。
+  - 例: `[0, 1, 2, 3]` を指定すると、このアニメーションは指定されたプレフィックスの最初の4フレームのみを使用します。
+- `assetPath`: `multisparrow` アセットタイプ専用。読み込まれるセカンダリのスパーロウスプライトシートを定義し、このアニメーションのフレームを含めます。
 
-Character data is structured like so:
-- `bf`: Data about the stage's player character.
-  - `zIndex`: A value describing the relative position of the player character. Elements with higher values get placed in front of those with lower values.
-  - `position`: The X and Y position where the character should be positioned, relative to other props in the stage.
-  - `scale`: The relative scale to display the character at. For example, `0.5` makes the character half as big as the default.
-  - `cameraOffsets`: When the camera focuses on this character, focus on the character's center, then apply camera offsets to shift the camera focus to the desired spot.
-- `dad`: Data about the stage's opponent character.
-  - `zIndex`: A value describing the relative position of the opponent character. Elements with higher values get placed in front of those with lower values.
-  - `position`: The X and Y position where the character should be positioned, relative to other props in the stage.
-  - `scale`: The relative scale to display the character at. For example, `0.5` makes the character half as big as the default.
-  - `cameraOffsets`: When the camera focuses on this character, focus on the character's center, then apply camera offsets to shift the camera focus to the desired spot.
-- `gf`: Data about the stage's background character.
-  - `zIndex`: A value describing the relative position of the background character. Elements with higher values get placed in front of those with lower values.
-  - `position`: The X and Y position where the character should be positioned, relative to other props in the stage.
-  - `scale`: The relative scale to display the character at. For example, `0.5` makes the character half as big as the default.
-  - `cameraOffsets`: When the camera focuses on this character, focus on the character's center, then apply camera offsets to shift the camera focus to the desired spot.
+キャラクターデータは以下のように構成されています：
+- `bf`: ステージのプレイヤーキャラクターに関するデータ。
+  - `zIndex`: プレイヤーキャラクターの相対的な位置を表す値。値が大きい要素は小さい要素の前に配置されます。
+  - `position`: ステージ内の他のプロップに対する相対的な位置（X座標とY座標）。
+  - `scale`: キャラクターを表示する相対的なスケール。例えば`0.5`はデフォルトの半分の大きさになります。
+  - `cameraOffsets`: カメラがこのキャラクターに焦点を合わせる際、キャラクターの中心に焦点を合わせた後、カメラオフセットを適用してカメラの焦点を目的の位置にシフトします。
+- `dad`: ステージ上の対戦相手キャラクターに関するデータ。
+  - `zIndex`: 対戦相手キャラクターの相対的な位置を表す値。値が大きい要素は小さい要素の前面に配置される。
+  - `position`: ステージ上の他のプロップに対する相対位置として、キャラクターを配置すべきX座標とY座標。
+  - `scale`: キャラクターを表示する相対的なスケール。例えば`0.5`はデフォルトの半分の大きさになる。
+  - `cameraOffsets`: カメラがこのキャラクターに焦点を合わせる際、キャラクターの中心を基準とし、カメラオフセットを適用して焦点位置を調整する。
+- `gf`: ステージの背景キャラクターに関するデータ。
+  - `zIndex`: 背景キャラクターの相対的な位置を表す値。値が大きい要素は小さい要素の前に配置されます。
+  - `position`: ステージ上の他のプロップに対する相対位置として、キャラクターを配置すべきX座標とY座標。
+  - `scale`: キャラクターを表示する相対的なスケール。例えば`0.5`はデフォルトの半分の大きさで表示する。
+  - `cameraOffsets`: カメラがこのキャラクターに焦点を合わせる際、キャラクターの中心に焦点を合わせた後、カメラオフセットを適用してカメラの焦点を目的の位置へ移動させる。
 
 
-Animation data is structured like so:
-- `name`: The internal animation name for the game to use.
-- `prefix`: The animation name as specified by your spritesheet.
-  - For Sparrow or Packer, check inside the data file to see what each set of frames is named, and use that as the prefix, excluding the frame numbers at the end.
-  - For Animate Atlases, use either the frame label or the symbol name of the animation you want to play.
-- `offsets`: Some animations may need their positions to be corrected relative to the idle animation.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `looped`: Whether to loop this animation in-game. If false, the animation will pause when it ends, until the game commands the character to do something else.
-- `flipX`: Whether to flip the sprites of this animation horizontally in-game.
-- `flipY`: Whether to flip the sprites of this animation vertically in-game.
-- `frameRate`: A frame rate value, defaulting to `24`.
-- `frameIndices`: Optionally specify an array of frame numbers (starting at frame 0!) to use from a given prefix for this animation.
-  - For example, specifying `[0, 1, 2, 3]` will make this animation only use the first 4 frames of the given prefix.
-- `assetPath`: For the `multisparrow` asset type specifically. Define a secondary Sparrow spritesheet which will be loaded, and which contains the frames for this animation.
+アニメーションデータは以下のように構成されています：
+- `name`: ゲームが使用する内部アニメーション名。
+- `prefix`: スプライトシートで指定されたアニメーション名。
+  - Sparrow または Packer の場合、データファイル内で各フレームセットの名前を確認し、末尾のフレーム番号を除いた名前をプレフィックスとして使用してください。
+  - Animate Atlases の場合、再生したいアニメーションのフレームラベルまたはシンボル名のいずれかを使用してください。
+- `offsets`: 一部のアニメーションは、アイドルアニメーションに対する位置補正が必要な場合があります。
+  - 2つの小数値の配列を使用します。最初の値が水平位置、2番目の値が垂直位置です。
+- `looped`: ゲーム内でこのアニメーションをループ再生するかどうか。falseの場合、アニメーション終了時に一時停止し、ゲームがキャラクターに別の動作を指示するまで待機します。
+- `flipX`: ゲーム内でこのアニメーションのスプライトを水平反転するかどうか。
+- `flipY`: ゲーム内でこのアニメーションのスプライトを垂直反転するかどうか。
+- `frameRate`: フレームレート値。デフォルトは `24`。
+- `frameIndices`: オプションで、指定されたプレフィックスから使用するフレーム番号の配列（フレーム0から開始！）を指定します。
+  - 例: `[0, 1, 2, 3]` を指定すると、指定されたプレフィックスの最初の4フレームのみが使用されます。
+- `assetPath`: `multisparrow`アセットタイプ専用。読み込まれる二次的なSparrowスプライトシートを定義し、このアニメーションのフレームを含めます。
 
-The animation names the game uses by default are:
-- `idle`: For the idle animation.
-- `danceLeft` and `danceRight`: Supercedes the idle animation with one that toggles between two animations.
-- `singLEFT`, `singDOWN`, `singUP`, `singRIGHT`: The animations for playing notes, when the character is a player or opponent.
-- `singLEFTmiss`, `singDOWNmiss`, `singUPmiss`, `singRIGHTmiss`: The animations for missing notes, when the character is a player.
-- Adding a new singing animation with the name of an existing animation with `-hold` at the end will play the animation after the first one ends, while the character is still singing.
-  - As a good example, you can copy the `singLEFT` animation to make a `singLEFT-hold` animation, which has `looped` as true and `frameIndices` as the last few frames of the singing animation.
-- Adding a new singing animation with the name of an existing animation with `-end` at the end will play an animation before returning to idle.
-  - For example, you can define a new `singLEFT-end` animation to cleanly transition into the idle animation.
-- You can add other animations by name, but you'll have to play them with a script, or a `Play Animation` song event in the Chart Editor.
+ゲームがデフォルトで使用するアニメーション名は以下の通りです：
+- `idle`: 待機アニメーション用。
+- `danceLeft` および `danceRight`: 待機アニメーションを、2つのアニメーションを切り替えるアニメーションに置き換えます。
+- `singLEFT`, `singDOWN`, `singUP`, `singRIGHT`: キャラクターがプレイヤーまたは対戦相手である際の、音符演奏時のアニメーション。
+- `singLEFTmiss`, `singDOWNmiss`, `singUPmiss`, `singRIGHTmiss`: キャラクターがプレイヤーである際の、音符ミス時のアニメーション。
+- 既存のアニメーション名に末尾に `-hold` を付加して新規歌唱アニメーションを追加すると、最初のアニメーション終了後、キャラクターが歌唱を継続した状態で再生されます。
+  - 良い例として、`singLEFT` アニメーションをコピーして `singLEFT-hold` アニメーションを作成できます。この場合、`looped` は true、`frameIndices` は歌唱アニメーションの最終数フレームを指定します。
+- 既存のアニメーション名に`-end`を付加して新規歌唱アニメーションを追加すると、アイドル状態に戻る前にアニメーションが再生されます。
+  - 例として、新規`singLEFT-end`アニメーションを定義し、アイドルアニメーションへスムーズに移行させることが可能です。
+- 名称で他のアニメーションを追加できますが、再生にはスクリプトまたはチャートエディタの`Play Animation`ソングイベントが必要です。
 
-When the game starts, it queries the list of possible characters by searching in the `data/characters` folder for JSON files. This gets used to preload data which is used later when the character is loaded in a stage.
+ゲーム起動時、`data/characters`フォルダ内のJSONファイルを検索し、使用可能なキャラクターリストを問い合わせます。これはキャラクターがステージで読み込まれる際に使用されるデータをプリロードするために利用されます。
 
 [^stagesource]: <https://github.com/FunkinCrew/funkin.assets/blob/main/preload/data/stages/mainStage.json>

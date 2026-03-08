@@ -1,5 +1,5 @@
-# Creating a Friday Night Funkin' Mod - Fundamentals
+# Friday Night Funkin' MODの作成 - 基礎編
 
-This guide will walk you through the process of creating a functioning, fully compatible Friday Night Funkin' mod, using the game's official systems for loading custom content and scripts. Once your mod is complete, you will be able to place it in the `mods` folder in your game install and use its content in-game without overriding the base game content and still maintain compatibility with other mods.
+このガイドでは、カスタムコンテンツやスクリプトを読み込むための公式システムを使用し、動作し完全に互換性のあるFriday Night Funkin' MODを作成する手順を解説します。MODが完成したら、ゲームインストール先の`mods`フォルダに配置することで、ベースゲームのコンテンツを上書きすることなくゲーム内でそのコンテンツを使用でき、他のMODとの互換性も維持できます。
 
-This chapter in particular goes through a lot of core concepts of modding in Funkin' that will get used in other guides, so be sure to read through it carefully.
+特にこの章では、他のガイドでも活用されるFunkin'におけるMODの核心概念を数多く解説します。必ず注意深く読み進めてください。

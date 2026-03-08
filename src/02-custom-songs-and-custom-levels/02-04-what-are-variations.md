@@ -1,11 +1,11 @@
-# What Are Variations?
+# バリエーションとは？
 
-Variations are groups of difficulties for a given song which share metadata.
+バリエーションとは、特定の楽曲においてメタデータを共有する難易度群を指します。
 
-As an example, the song DadBattle has eight separate difficulties (at time of writing). These are Easy, Normal, Hard, Erect (Erect Mix), Nightmare (Erect Mix), Easy (Pico Mix), Normal (Pico Mix), and Hard (Pico Mix).
+例として、楽曲「DadBattle」には（執筆時点で）8つの独立した難易度が存在します。これらは「Easy」「Normal」「Hard」「Erect（Erect Mix）」「Nightmare（Erect Mix）」「Easy（Pico Mix）」「Normal（Pico Mix）」「Hard（Pico Mix）」です。
 
-These are divided into three variations; Default, Erect, and Pico. Each variation defines information like BPM (and BPM changes), artist, charter, which album the song is from, which stage to use, which character to use in those stages, and which instrumental and vocal track to use. The variation then defines which difficulties it includes, and the chart data for that variation specifies the events for that variation, and the note data and scroll speed for each difficulty.
+これらは3つのバリエーション（デフォルト、Erect、Pico）に分類されます。各バリエーションはBPM（およびBPM変化）、アーティスト、チャート、収録アルバム、使用するステージ、ステージで使用するキャラクター、使用するインストゥルメンタル/ボーカルトラックなどの情報を定義します。その後、そのバリエーションに含まれる難易度を定義し、そのバリエーションのチャートデータは、そのバリエーションのイベント、各難易度のノートデータ、スクロール速度を指定します。
 
-This means that, in order to make one of these values different for a specific difficulty or remix (including changing the events), you must put that difficulty into a new variation.
+つまり、特定の難易度やリミックスにおいてこれらの値のいずれか（イベントの変更を含む）を変更するには、その難易度を新しいバリエーションに追加する必要があります。
 
-The `metadata.json` file for a song defines what variations exist for that song; the game then looks for `metadata-<variationID>.json` and `chart-<variationID>.json` files for each listed variation.
+楽曲の`metadata.json`ファイルは、その楽曲に存在するバリエーションを定義します。ゲームはリストされた各バリエーションに対して、`metadata-<variationID>.json`と`chart-<variationID>.json`ファイルを検索します。

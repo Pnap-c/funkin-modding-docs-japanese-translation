@@ -1,8 +1,8 @@
-# Using a Character in a Song
+# 楽曲内でのキャラクター使用方法
 
-There are two ways to use your character in a song once it's implemented.
+実装済みのキャラクターを楽曲で使用するには、以下の2つの方法があります。
 
-1. Create a new chart. Open the Chart Editor, start a chart, and select the character from the `Metadata` toolbox before charting.
-2. Edit an existing chart in your mod. Open the `metadata.json` file and check in `playData.characters` for the `player`, `girlfriend`, and `opponent` keys.
+1. 新規チャートを作成する。チャートエディタを開き、チャート作成を開始します。チャート作成前に、`Metadata`ツールボックスからキャラクターを選択してください。
+2. MOD内の既存チャートを編集する。`metadata.json`ファイルを開き、`playData.characters`内の`player`、`girlfriend`、`opponent`キーを確認する。
 
-Once the chart which references your character is in your mod folder, simply start the game with your mod installed.
+キャラクターを参照するチャートがMODフォルダに存在すれば、MODをインストールした状態でゲームを起動するだけで利用可能になります。

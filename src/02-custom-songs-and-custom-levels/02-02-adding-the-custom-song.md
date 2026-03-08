@@ -1,12 +1,12 @@
-# Adding The Custom Song
+# カスタム曲の追加
 
-At the end of [Creating A Chart](02-01-creating-a-chart.md) we learned that `.fnfc` files were just `.zip` archives, so we can simply rename it and unzip it. Once we have thse files, we just need to put them in the correct spots in our mod folder!
+[チャートの作成](02-01-creating-a-chart.md) の最後で、`.fnfc`ファイルは単なる`.zip`アーカイブであることを学びました。そのため、ファイル名を変更して解凍するだけで済みます。これらのファイルを入手したら、MODフォルダ内の適切な場所に配置するだけです！
 
-- The `manifest.json` file can be discarded, our mod won't need it.
-- The `metadata.json` and `chart.json` files need to go into the `data/songs/<songid>` folder, replacing `<songid>` with the internal name for our song.
-- The OGG files need to go into `songs/<songid>`, again replacing `<songid>` with the internal name of our song.
+- `manifest.json`ファイルは不要です。当MODでは使用しません。
+- `metadata.json`と`chart.json`ファイルは`data/songs/<songid>`フォルダに配置します。`<songid>`は楽曲の内部IDに置き換えてください。
+- OGGファイルは`songs/<songid>`フォルダに配置します。ここでも`<songid>`を楽曲の内部名に置き換えてください。
 
-We'll end up with something like this.
+最終的には以下のような構成になります。
 
 ```
 -mods
@@ -24,11 +24,11 @@ We'll end up with something like this.
    |-_polymod_meta.json
 ```
 
-When the game starts, it queries the list of available songs by looking in the `data/songs` folder for `<songid>/<songid>-metadata.json` files, which it then uses to find the chart file and the requisite song files. Neat! But right now, if you boot up the game, this doesn't do anything. You'll see it mentioned in the logs with no complaints, but it's not playable in Story Mode or Freeplay, what gives?
+ゲーム起動時、`data/songs`フォルダ内の`<songid>/<songid>-metadata.json`ファイルを検索して利用可能な楽曲リストを取得し、チャートファイルと必要な楽曲ファイルを特定します。素晴らしい仕組みですね！しかし現状、ゲームを起動しても何も動作しません。ログにはエラーなく記載されているものの、ストーリーモードやフリープレイで再生できません。なぜでしょうか？
 
 ```
 source/funkin/play/song/Song.hx:579: Fetching song metadata for mychart
 source/funkin/data/song/SongRegistry.hx:103:   Loaded entry data: Song(mychart)
 ```
 
-The fix is simple; every song must be part of a Story Mode level to appear in Freeplay.
+修正は簡単です。すべての楽曲は、フリープレイに表示されるためにはストーリーモードのレベルの一部でなければなりません。

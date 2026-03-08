@@ -1,3 +1,3 @@
-# Chapter Conclusion
+# 章のまとめ
 
-This chapter has covered the fundamentals of creating mods for Friday Night Funkin'. In other sections, we will go over how to add different types of custom content.
+この章では、Friday Night Funkin' のMOD作成の基本について解説しました。他のセクションでは、様々な種類のカスタムコンテンツの追加方法について説明します。

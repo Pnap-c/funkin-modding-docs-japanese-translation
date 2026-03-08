@@ -1,8 +1,8 @@
-# Using a Stage in a Song
+# 楽曲内でのステージ使用
 
-There are two ways to use your stage in a song once it's implemented.
+ステージを実装後、楽曲で使用するには2つの方法があります。
 
-1. Create a new chart. Open the Chart Editor, start a chart, and select the stage from the `Metadata` toolbox before charting.
-2. Edit an existing chart in your mod. Open the `metadata.json` file and check in `playData` for the `stage` key, and set it to your internal ID.
+1. 新規チャートを作成する。チャートエディタを開き、チャート作成を開始し、チャート作成前に`Metadata`ツールボックスからステージを選択する。
+2. MOD内の既存チャートを編集する。`metadata.json`ファイルを開き、`playData`内の`stage`キーを確認し、内部IDを設定する。
 
-Once the chart which references your stage is in your mod folder, simply start the game with your mod installed.
+ステージを参照するチャートがMODフォルダに配置されたら、MODをインストールした状態でゲームを起動するだけです。

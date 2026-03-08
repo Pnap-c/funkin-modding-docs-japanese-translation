@@ -1,14 +1,14 @@
-# Creating a new Sticker Pack
+# 新しいステッカーパックの作成
 
-## Sticker Pack Assets
+## ステッカーパックのアセット
 
-In order to create your own sticker pack, you will need graphics for the stickers you want to use. The ones included in the base game are generally around 300x300 in size, with some variation.
+独自のステッカーパックを作成するには、使用するステッカーのグラフィックが必要です。基本ゲームに含まれるステッカーのサイズは、一般的に300x300ピクセル前後で、多少のばらつきがあります。
 
-## Sticker Pack Data
+## ステッカーパックのデータ
 
-A custom sticker pack requires creating a new JSON file in the `data/stickerpacks` folder.
+カスタムステッカーパックを作成するには、`data/stickerpacks`フォルダ内に新しいJSONファイルを作成する必要があります。
 
-Below is the "default" sticker pack JSON file `assets/data/stickerpacks/default.json`[^stickerpacksource]
+以下は「デフォルト」ステッカーパックのJSONファイル `assets/data/stickerpacks/default.json`[^stickerpacksource] の例です。
 
 ```json
 {
@@ -23,12 +23,12 @@ Below is the "default" sticker pack JSON file `assets/data/stickerpacks/default.
 }
 ```
 
-Let's break it all down.
-- `version`: The version number for the Sticker Pack data file format. Leave this at `1.0.0`.
-  - This will increase if the data file format changes, and tell the game whether additional processing needs to be done for backwards compatibility.
-- `name`: The readable name for the sticker pack, used in places like the Chart Editor.
-- `author`: The author of the sticker pack, aka the artist who created the assets.
-- `stickers`: A list of all the paths for all the stickers to use, as strings.
-  - You cannot currently specify any additional arguments, such as scale, offsets, texture smoothing, or animations.
+すべてを分解してみましょう。
+- `version`: ステッカーパックデータファイル形式のバージョン番号。`1.0.0` のままにしておいてください。
+  - データファイル形式が変更された場合に増加し、下位互換性のために追加処理が必要かどうかをゲームに伝えます。
+- `name`: ステッカーパックの読みやすい名前。チャートエディタなどで使用されます。
+- `author`: ステッカーパックの作成者、つまりアセットを作成したアーティスト。
+- `stickers`: 使用する全ステッカーのパスを文字列で列挙したリスト。
+  - 現時点では、大きさ、位置、テクスチャスムージング、アニメーションなどの追加引数は指定できません。
 
 [^stickerpacksource]: <https://github.com/FunkinCrew/funkin.assets/blob/main/preload/data/stickerpacks/default.json>

@@ -1,28 +1,28 @@
-# Required Assets
+# 必要なアセット
 
-In order to make a fleshed out custom character that can be used from Character Select in Friday Night Funkin', you need a large number of textures, animations, and audio tracks:
+Friday Night Funkin'のキャラクター選択画面で使用可能な、完成度の高いカスタムキャラクターを作成するには、大量のテクスチャ、アニメーション、オーディオトラックが必要です：
 
-- A [custom character](../03-custom-characters/03-00-custom-characters.md)
-    - This requires a set of singing animations for the character.
-- At least one custom song that uses that character; this can be either [a new song](../02-custom-songs-and-custom-levels/02-02-adding-the-custom-song.md) or a [variation added to an existing song](../02-custom-songs-and-custom-levels/02-05-adding-variations-to-existing-songs.md).
-    - This requires an instrumental and split vocal tracks.
-- A pixel icon asset to use for that character's icon in the Character Select grid.
-    - This supports either a static image or a Sparrow spritesheet (which includes the animation to play when the character is selected).
-- A namecard asset to use for that character's name above them in the Character Select menu.
-    - The pixellation effect is done in code so this just needs to be a single static image.
-- Animations for the character to use in the Character Select menu.
-    - This is currently hard-coded to use an Adobe Animate texture atlas and cannot use a Sparrow spritesheet.
-    - The character needs animations for unlock, idle, slide in, slide out, select, and deselect.
-- Assets to use for the character's Girlfriend character to the left of them in the Character Select menu.
-    - This is currently hard-coded to use an Adobe Animate texture atlas and cannot use a Sparrow spritesheet.
-    - The character needs animations for unlock, idle, slide in, slide out, select, and deselect.
-- Assets for the character to use on the Freeplay menu.
-    - This is currently hardcoded to use an Adobe Animate texture atlas.
-    - The character needs animations for leaping in, idle, confirm, and moving to character select. It also optionally has an idle and cartoon animation.
-- Assets for the character's Freeplay skin and the backing card.
-    - This requires a variety of assets but can use Boyfriend's as a fallback.
-    - NOTE: This is currently hardcoded to BF or Pico.
-- Assets for the character's animations in the Results screen.
-    - Each rank has its own animation and music, but animations can be reused between ranks and results themes can fall back to the default.
-    - Rank animations are Loss, Good, Great, Excellent, Perfect, and Perfect Gold (the base game uses the same animation for Perfect and Perfect Gold)
-    - Each also can take its own music, but you can reuse Boyfriend's as a good placeholder.
+- [カスタムキャラクター](../03-custom-characters/03-00-custom-characters.md)
+    - キャラクターの歌唱アニメーション一式が必要です。
+- そのキャラクターを使用するカスタム楽曲が少なくとも1曲必要です。これは[カスタム曲の追加](../02-custom-songs-and-custom-levels/02-02-adding-the-custom-song.md)でも、[既存楽曲へのバリエーション追加](../02-custom-songs-and-custom-levels/02-05-adding-variations-to-existing-songs.md)でも構いません。
+    - これには楽曲トラックと分割ボーカルトラックが必要です。
+- キャラクター選択グリッドでそのキャラクターのアイコンとして使用するピクセルアイコンアセット。
+    - 静止画またはSparrowスプライトシート（キャラクター選択時に再生するアニメーションを含む）のいずれかをサポートします。
+- キャラクター選択メニューでキャラクター名を表示するために使用するネームカードアセット。
+    - ピクセル化効果はコードで処理されるため、単一の静止画像で十分です。
+- キャラクター選択メニューで使用するキャラクターのアニメーション。
+    - 現在、Adobe Animateのテクスチャアトラスをハードコードで使用しており、Sparrowスプライトシートは使用できません。
+    - キャラクターには、アンロック、アイドル、スライドイン、スライドアウト、選択、非選択の各アニメーションが必要です。
+- キャラクター選択メニューでキャラクターの左側に表示されるガールフレンドキャラクターに使用するアセット。
+    - 現在、Adobe Animateのテクスチャアトラスを使用するようハードコードされており、Sparrowのスプライトシートは使用できません。
+    - キャラクターには、アンロック、アイドル、スライドイン、スライドアウト、選択、非選択のアニメーションが必要です。
+- フリープレイメニューで使用するキャラクターのアセット。
+    - 現在、Adobe Animateのテクスチャアトラスを使用するようハードコードされています。
+    - キャラクターには、ジャンプイン、アイドル、確定、キャラクター選択画面への移動用のアニメーションが必要です。オプションでアイドルアニメーションとカートゥーンアニメーションも用意されています。
+- キャラクターのフリープレイ用スキンとバックカード用アセット。
+    - 様々なアセットが必要だが、ボーイフレンドのものを代替として使用可能。
+    - 注：現在はBFまたはピコ用にコーディングされている。
+- 結果画面におけるキャラクターのアニメーション用アセット。
+    - 各ランクごとに固有のアニメーションと音楽が必要だが、アニメーションはランク間で流用可能。結果テーマはデフォルトにフォールバック可。
+    - ランクアニメーション：Loss、Good、Great、Excellent、Perfect、Perfect Gold（基本ゲームではPerfectとPerfect Goldは同一アニメーションを使用）
+    - 各ランクは固有の音楽を設定可能だが、ボーイフレンドの音楽を仮置きとして流用可。

@@ -1,29 +1,29 @@
-# Creating a Note Style
+# ノーツスタイルの作成
 
-## Note Style Assets
+## ノーツスタイルのアセット
 
-In order to create your own note style, you will need assets for a variety of elements:
+独自のノーツスタイルを作成するには、以下の要素のアセットが必要です：
 
-- `note`: The general notes for the song. These display in the chart editor as well as in-game as the notes the player must hit.
-- `holdNote`: The sprites for the hold notes which require the key to be held rather than pressed.
-- `noteStrumline`: The notes on the strumline, which react when the player presses the keys, and provide visual feedback for when notes need to be hit.
-- `noteSplash`: The special effect when the player gets `Sick!` rating.
-- `holdNoteCover`: The special effect when the player is holding a hold note.
-- `countdown`: The assets (both the sprites and audio) for the countdown that happens before the song starts.
-- `judgementShit`: The assets for judgements, which display how well you hit a note.
-- `comboNumber0`: The assets for the combo counter, which displays when you hit a certain number of notes in a row.
+- `note`: 曲の一般的なノーツ。チャートエディタとゲーム内で、プレイヤーが叩くべきノーツとして表示されます。
+- `holdNote`: 押すのではなくキーを押し続ける必要があるホールドノーツのスプライト。
+- `noteStrumline`: プレイヤーがキーを押した際に反応し、ノーツを叩くタイミングを視覚的に示す、ストラムライン上のノーツ。
+- `noteSplash`: プレイヤーが`Sick!`評価を得た際の特殊効果。
+- `holdNoteCover`: プレイヤーがホールドノーツを押さえている際の特殊効果。
+- `countdown`: 曲開始前に表示されるカウントダウンのアセット（スプライトと音声の両方）。
+- `judgementShit`: 判定表示用アセット。ノーツの正確なヒット度合いを表示します。
+- `comboNumber0`: コンボカウンター用アセット。連続して一定数のノーツをヒットした際に表示されます。
 
-These assets should be placed in your mod folder, ideally somewhere organized. They don't have to be in any specific location, just one that you can directly reference from your note style's JSON data file.
+これらのアセットは、modフォルダ内の整理された場所に配置してください。特定の場所である必要はありませんが、ノーツスタイルのJSONデータファイルから直接参照できる場所であることが重要です。
 
-## Note Style Fallback
+## ノーツスタイルのフォールバック
 
-Note styles use a recursive fallback system; essentially, you can specify just one or several assets for a note style. If a fallback note style is specified, the parent will be queried for any assets that aren't included. If the parent doesn't have an asset, ITS parent will be referenced, and so on. This allows you to easily make note styles which perform only slight variations on the style they are based on.
+ノーツスタイルは再帰的なフォールバックシステムを採用しています。基本的に、ノーツスタイルに対して1つまたは複数のアセットを指定できます。フォールバックノーツスタイルが指定されている場合、親スタイルに含まれていないアセットが検索されます。親スタイルに該当するアセットがない場合、その親スタイルを参照し、以下同様です。これにより、基となるスタイルからわずかなバリエーションのみを加えたノーツスタイルを簡単に作成できます。
 
-## Note Style Data
+## ノーツスタイルデータ
 
-A custom note style requires creating a new JSON file in the `data/notestyles` folder.
+カスタムノーツスタイルを作成するには、`data/notestyles`フォルダ内に新しいJSONファイルを作成する必要があります。
 
-Below is the "funkin" (aka the default) note style json file `assets/data/notestyles/funkin.json`[^notestylesource]
+以下は「funkin」（別名デフォルト）ノーツスタイルのJSONファイル`assets/data/notestyles/funkin.json`[^notestylesource]です。
 
 ```json
 {
@@ -186,43 +186,43 @@ Below is the "funkin" (aka the default) note style json file `assets/data/notest
 
 ```
 
-There is quite a lot to unravel, let's break it all down.
-- `version`: The version number for the Note Style data file format. Leave this at `1.0.0`.
-- `name`: The readable name for the note style, used in places like the Chart Editor.
-- `author`: The author of the note style, aka the artist who created the assets.
-- `fallback`: The note style ID to use as a fallback note style. Any assets not included for this note style will use the parent's asset instead. `"funkin"` is the recommended default in order to use the default base game assets for anything that is not specified.
-- `assets`: A list of asset data for each of the assets for the note style.
-    - See [list of assets](#note-style-assets) that you can provide the data for.
+解きほぐすべき点はかなり多いので、全て分解していきましょう。
+- `version`: ノーツスタイルデータファイル形式のバージョン番号。`1.0.0` のままにしておいてください。
+- `name`: ノーツスタイルの読みやすい名前。チャートエディタなどで使用されます。
+- `author`: ノーツスタイルの作成者、つまりアセットを作成したアーティスト。
+- `fallback`: フォールバック用ノーツスタイルID。このスタイルに未設定のアセットは親スタイルのアセットを使用します。未指定要素には基本ゲームのアセットを適用するため、`「funkin」`を推奨デフォルト値とします。
+- `assets`: ノーツスタイル用アセットデータのリスト。
+    - 提供可能なデータの一覧は[アセット一覧](#note-style-assets)を参照してください。
 
-Asset data is structured like so:
-- `assetPath`: The main asset path to use for this asset.
-- `scale`: Specify the size of the asset relative to the original size. For example, `2.0` makes the sprite twice as big. Defaults to `1.0` if unspecified.
-- `offsets`: Some animations may need their positions to be corrected relative to the idle animation.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `isPixel`: Specify whether to display this asset as being pixel (disabling texture smoothing). Optional, defaults to `false`.
-- `data`: The structure of note style asset data objects that depends on the asset you are going to edit.
+アセットデータは以下の構造です：
+- `assetPath`: このアセットに使用するメインアセットパス。
+- `scale`: オリジナルサイズに対するアセットのサイズを指定します。例えば`2.0`はスプライトを2倍の大きさにする。指定しない場合、デフォルトは`1.0`。
+- `offsets`: 一部のアニメーションでは、待機アニメーションに対する位置補正が必要になる場合があります。
+  - 2つの小数値の配列を使用します。最初の値が水平位置、2番目の値が垂直位置です。
+- `isPixel`: このアセットをピクセル表示するか（テクスチャスムージングを無効化）を指定します。オプションで、デフォルトは `false` です。
+- `data`: 編集するアセットに応じて異なる、ノーツスタイルアセットデータオブジェクトの構造です。
 
-Note Style Asset data is structured like so:
-- For `note`: List of animation data for the `left`, `down`, `up` and `right` arrows.
-- For `noteStrumline`: List of animation data for each direction and it's variations, such as `<direction>Static`, `<direction>Press`, `<direction>Confirm`, `<direction>ConfirmHold` replacing `<direction>` with it's each and every corresponding direction.
-  - As you may see from the [example](#note-style-data)[^notestylesource] that was given, animation data for the `confirm` and `confirmHold` match up, however you can make it have unique animations.
-- For `holdNote`: Currently has no list of animation data that can be set.
-- For `noteSplash`: There is currently no list of animation data available that can be set. It is likely to be added in the future.
-  - `enabled`: Specify whether to display the asset. Optional, defaults to `true`.
-- For `holdNoteCover`: There is currently no list of animation data available that can be set. It is likely to be added in the future.
-  - `enabled`: Specify whether to display the asset. Optional, defaults to `true`.
+ノーツスタイルアセットデータは以下のように構成されています：
+- `note`の場合：`left`、`down`、`up`、`right`各方向のアニメーションデータリスト。
+- `noteStrumline`の場合：各方向とそのバリエーション（例：`<direction>Static`、`<direction>Press`、`<direction>Confirm`、`<direction>ConfirmHold`）のアニメーションデータ一覧。`<direction>`は対応する各方向で置き換えます。
+  - 提供された[例](#note-style-data)[^notestylesource]からもわかるように、`confirm`と`confirmHold`のアニメーションデータは一致していますが、独自のアニメーションを設定することも可能です。
+- `holdNote`の場合：現在、設定可能なアニメーションデータのリストはありません。
+- `noteSplash`の場合：現在、設定可能なアニメーションデータのリストはありません。将来追加される可能性があります。
+  - `enabled`: アセットを表示するかどうかを指定します。オプションで、デフォルトは `true` です。
+- `holdNoteCover` について: 現在設定可能なアニメーションデータのリストはありません。将来追加される可能性があります。
+  - `enabled`: アセットを表示するかどうかを指定します。オプションで、デフォルトは `true` です。
 
-Animation data is structured like so:
-- `prefix`: The animation name as specified by your spritesheet.
-  - For Sparrow or Packer, check inside the data file to see what each set of frames is named, and use that as the prefix, excluding the frame numbers at the end.
-  - For Animate Atlases, use either the frame label or the symbol name of the animation you want to play.
-- `offsets`: Some animations may need their positions to be corrected relative to the idle animation.
-  - Use an array of two decimal values, the first for horizontal position and the second for vertical position.
-- `looped`: Whether to loop this animation in-game. If false, the animation will pause when it ends, until the game commands the asset to do something else.
-- `flipX`: Whether to flip the sprites of this animation horizontally in-game.
-- `flipY`: Whether to flip the sprites of this animation vertically in-game.
-- `frameRate`: A frame rate value, defaulting to `24`.
-- `frameIndices`: Optionally specify an array of frame numbers (starting at frame 0!) to use from a given prefix for this animation.
-  - For example, specifying `[0, 1, 2, 3]` will make this animation only use the first 4 frames of the given prefix.
+アニメーションデータは以下のように構成されています：
+- `prefix`: スプライトシートで指定されたアニメーション名。
+  - SparrowまたはPackerの場合、データファイル内で各フレームセットの名前を確認し、末尾のフレーム番号を除いた名前をプレフィックスとして使用してください。
+  - Animate Atlasesの場合、再生したいアニメーションのフレームラベルまたはシンボル名のいずれかを使用してください。
+- `offsets`: 一部のアニメーションは、待機アニメーションに対する相対位置の補正が必要になる場合があります。
+  - 2つの小数値の配列を使用します。最初の値が水平位置、2番目の値が垂直位置です。
+- `looped`: ゲーム内でこのアニメーションをループ再生するかどうか。falseの場合、アニメーション終了時に一時停止し、ゲームがアセットに別の動作を指示するまで待機します。
+- `flipX`: ゲーム内でこのアニメーションのスプライトを水平反転するかどうか。
+- `flipY`: ゲーム内でこのアニメーションのスプライトを垂直反転するかどうか。
+- `frameRate`: フレームレート値。デフォルトは `24`。
+- `frameIndices`: オプションで、指定されたプレフィックスから使用するフレーム番号の配列（フレーム0から開始！）を指定します。
+  - 例: `[0, 1, 2, 3]` を指定すると、このアニメーションは指定されたプレフィックスの最初の4フレームのみを使用します。
 
 [^notestylesource]: <https://github.com/FunkinCrew/funkin.assets/blob/main/preload/data/notestyles/funkin.json>

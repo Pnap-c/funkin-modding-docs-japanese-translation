@@ -1,5 +1,5 @@
-# Creating a Friday Night Funkin' Mod - Custom Sticker Packs
+# Friday Night Funkin' MODの作成 - カスタムステッカーパック
 
-This chapter will walk you through the process of creating a functioning, fully compatible Friday Night Funkin' mod, using the game's official systems for loading custom content and scripts. Once your mod is complete, you will be able to place it in the `mods` folder in your game install and use its content in-game without overriding the base game content and still maintain compatibility with other mods.
+この章では、カスタムコンテンツとスクリプトを読み込むためのゲームの公式システムを使用して、機能し完全に互換性のあるFriday Night Funkin' MODを作成するプロセスを解説します。MODが完成したら、ゲームインストール先の`mods`フォルダに配置し、ベースゲームのコンテンツを上書きすることなくゲーム内でそのコンテンツを使用でき、他のMODとの互換性も維持できます。
 
-This chapter goes over adding new Sticker Packs to the game, and telling the game when to use them for songs.
+本章では、ゲームに新しいステッカーパックを追加する方法と、楽曲でそれらを使用するタイミングをゲームに指示する方法を解説します。

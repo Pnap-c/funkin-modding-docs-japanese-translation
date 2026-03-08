@@ -1,8 +1,8 @@
-# Using a Note Style in a Song
+# 楽曲でのノーツスタイルの使用
 
-There are currently two ways to use your note style in a song once it's implemented.
+実装済みのノーツスタイルを楽曲で使用するには、現在2つの方法があります。
 
-1. Create a new chart. Open the Chart Editor, start a chart, and then select the `Notestyle` box from the `Metadata` toolbox before charting.
-2. Edit an existing chart in your mod. Open the `metadata.json` file of the song you want to modify and check in `playData` for the `noteStyle` key.
+1. 新規チャートを作成する。チャートエディタを開き、チャート作成を開始後、チャート作成前に`Metadata`ツールボックスから`Notestyle`ボックスを選択します。
+2. モッド内の既存チャートを編集する。変更したい楽曲の `metadata.json` ファイルを開き、`playData` セクションで `noteStyle` キーを確認する。
 
-Once the chart which references your note style is in your mod folder, simply start the game with your mod installed.
+ノーツスタイルを参照するチャートがモッドフォルダに存在すれば、モッドをインストールした状態でゲームを起動するだけで利用可能です。

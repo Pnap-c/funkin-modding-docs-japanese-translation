@@ -1,11 +1,11 @@
-# Character Spritesheet Formats
+# キャラクタースプライトシート形式
 
-The individual sprites of a character's animations must be combined into a spritesheet for the game to use them. Friday Night Funkin' supports one of several formats:
+キャラクターのアニメーションを構成する個々のスプライトは、ゲームで使用するためにスプライトシートに結合する必要があります。Friday Night Funkin' は以下の形式のいずれかをサポートしています：
 
-- `sparrow`: Combines the images into a large sheet, then provides an XML file containing the coordinates of each frame with it. Can be exported directly from Adobe Animate or Flash CS6 using the `Generate Sprite Sheet` option, or can be created from individual frames using [Free Texture Packer](http://free-tex-packer.com/) (note that Free Texture Packer refers to this format as Starling).
+- `sparrow`: 画像を大きなシートに結合し、各フレームの座標を含む XML ファイルを同梱します。Adobe Animate または Flash CS6 の「スプライトシートを生成」オプションで直接エクスポート可能。あるいは [Free Texture Packer](http://free-tex-packer.com/) を使用して個々のフレームから作成可能（Free Texture Packer ではこの形式を Starling と呼称）。
 
-- `packer`: Combines images into a sheet, then provides a TXT file containing the coordinates of each frame.
+- `packer`: 画像をシートに結合し、各フレームの座標を含むTXTファイルを提供します。
 
-- `animateatlas`: Created exclusively when using Adobe Animate, this exports individual symbols into a large sheet, then provides a JSON file with data to split up each symbol, then provides a second JSON to arrange those symbols into animations. Great for performance, especially for characters which were made by rearranging smaller parts. We use the [FlxAnimate](https://github.com/Dot-Stuff/flxanimate) Haxelib for this.
+- `animateatlas`: Adobe Animate使用時のみ生成される形式。個々のシンボルを大型シートにエクスポートし、各シンボルを分割するデータを含むJSONファイルを提供。さらにそれらのシンボルをアニメーションに配置するための2つ目のJSONを提供します。パフォーマンス向上が期待でき、特に小さなパーツを再配置して作成されたキャラクターに有効です。この処理には[FlxAnimate](https://github.com/Dot-Stuff/flxanimate) Haxelibを使用しています。
 
-- `multisparrow`: Allows for different groups of animations to be exported into separate Sparrow spritesheets, then combined together into one character.
+- `multisparrow`: 異なるアニメーショングループを別々のSparrowスプライトシートにエクスポートし、それらを1つのキャラクターに統合することを可能にします。

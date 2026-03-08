@@ -1,16 +1,16 @@
-# Creating a Chart
+# チャートの作成
 
-To create a chart, access the Chart Editor tool. This can be found in-game by accessing the Debug menu from the main menu (this is bound to `~` by default). You can also access it by adding a keybind for "Debug Chart" in the options menu (not bound by default), then pressing the bound key while playing a song.
+チャートを作成するには、チャートエディタツールにアクセスします。ゲーム内ではメインメニューからデバッグメニュー（デフォルトでは`~`キーに割り当て）を開いてアクセスできます。オプションメニューで「デバッグチャート」にキーバインドを追加（デフォルトでは未割り当て）し、楽曲再生中に割り当てたキーを押す方法でもアクセス可能です。
 
-From here, you can create a new chart from audio files, import one from an older version of the game, or build a chart from existing in-game chart data.
+ここから、オーディオファイルから新規チャートを作成したり、旧バージョンのゲームからインポートしたり、既存のゲーム内チャートデータから構築したりできます。
 
-Detailed use of the chart editor deserves its own guide, but the basic should be fairly intuitive. For now, let's assume you've made a chart of your favorite song, and want to turn it into a mod people can play.
+チャートエディターの詳細な使用法は別途ガイドが必要ですが、基本操作は直感的に理解できるはずです。ここでは、お気に入りの曲のチャートを作成し、それをプレイ可能なMODに変換したい場合を想定します。
 
-## Dissecting Your FNFC File
+## FNFCファイルの構造解析
 
-When you save your chart, the game packages it up into a `.fnfc` file, which makes it easy to share with other charters and collaborate. It includes the audio for the song, along with the note data and some metadata files to go with it.
+チャートを保存すると、ゲームはそれを`.fnfc`ファイルにパッケージ化します。これにより他のチャート制作者との共有や共同作業が容易になります。このファイルには楽曲のオーディオデータ、ノートデータ、関連メタデータファイルが含まれています。
 
-To add the song to our mod, we need to get that info out. This is fairly easy, because an FNFC file is actually secretly a ZIP file! Rename your `mychart.fnfc` to `mychart.zip`, replacing the file extension so that your operating system recognizes it as a ZIP, and extract it to reveal its contents, which will be something like:
+この曲をMODに追加するには、その情報を抽出する必要があります。実はFNFCファイルはZIPファイルなので、非常に簡単です！`mychart.fnfc`のファイル拡張子を`mychart.zip`に変更し、オペレーティングシステムがZIPとして認識できるようにします。解凍すると、次のような内容が表示されます：
 
 ```
 -manifest.json

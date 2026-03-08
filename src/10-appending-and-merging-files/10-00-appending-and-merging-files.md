@@ -1,4 +1,4 @@
-# Creating a Friday Night Funkin' Mod - Appending And Merging Files
+# Friday Night Funkin' MODの作成 - ファイルの追加とマージ
 
-There will often be times where you want to modify the contents of an existing file. This is relatively straightforward for textures, but for data files, things get more complicated. You often don't want to replace the entire file, but instead just a smaller chunk, or even a single value. Thankfully, Polymod provides a function for doing this.
+既存ファイルの内容を変更したい場面は頻繁にあります。テクスチャの場合は比較的簡単ですが、データファイルとなると話は複雑になります。ファイル全体を置き換えるのではなく、小さな部分や単一の値だけを修正したい場合が多いでしょう。幸い、Polymodにはこのための機能が用意されています。
 

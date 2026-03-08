@@ -1,8 +1,8 @@
-# The Metadata File
+# メタデータファイル
 
-To start, create a new folder within your `mods` folder. This is where your mod's assets and scripts will live. Next, create a new text file, and change its name to `_polymod_meta.json`. Make sure you didn't accidentally name it `_polymod_meta.json.txt`!
+まず、`mods`フォルダ内に新しいフォルダを作成します。ここにMODのアセットとスクリプトを配置します。次に、新しいテキストファイルを作成し、名前を`_polymod_meta.json`に変更します。誤って`_polymod_meta.json.txt`と名付けないように注意してください！
 
-Inside this file, we will put the information the game needs in order to learn about your mod. I recommend doing this with a program like [Visual Studio Code](https://code.visualstudio.com/), it will correct you if you accidentally misplace a comma or something.
+このファイル内には、ゲームがあなたのMODを認識するために必要な情報を記述します。[Visual Studio Code](https://code.visualstudio.com/)のようなエディターでの作業をお勧めします。カンマの位置を誤った場合などに自動で修正してくれます。
 
 ```json
 {
@@ -25,27 +25,27 @@ Inside this file, we will put the information the game needs in order to learn a
 }
 ```
 
-`_polymod_meta.json` has the following fields:
+`_polymod_meta.json` には以下のフィールドがあります:
 
-- `title`: A readable name for the mod.
-- `description`: A readable description for the mod.
-- `contributors`: A list of Contributor objects.
-- `homepage`: A URL where users can learn more about your mod.
-- `dependencies`: A map of mod IDs which are mandatory dependencies, along with their version numbers.
-  - These are the mods which must also be loaded in order for this mod to load.
-  - If the mod is not included, it will fail.
-  - The mod list will be reordered such that dependencies load first.
-- `optionalDependencies`: A map of mod IDs which are optional dependencies, along with their version numbers.
-  - These mods do not necessarily need to be installed for this mod to load, but they will still force the mod list to be reordered so that the dependencies load before this mod.
-- `api_version`: A version number used to determine if mods are compatible with your copy of Funkin'. Change this to the version number for Friday Night Funkin' that you want to support, preferably the latest one (`0.6.3` at time of writing.).
-- `mod_version`: A version number specifically for your mod. Choose any version or leave it at `1.0.0`.
-- `license`: The license your mod is distributed under. [Pick one from here](https://opensource.org/licenses) or just leave it as `Apache-2.0`.
+- `title`: MODの読みやすい名前。
+- `description`: MODの読みやすい説明。
+- `contributors`: クレジットオブジェクトのリスト。
+- `homepage`: ユーザーがあなたのMODについて詳しく知ることができるURL。
+- `dependencies`: 必須依存関係であるMOD IDとそのバージョン番号のマップ。
+  - これらは、このMODをロードするために必ず一緒にロードされなければならないMODです。
+  - 含まれていない場合、MODは失敗します。
+  - 依存関係が先にロードされるようにMODリストは再順序付けされます。
+- `optionalDependencies`: オプション依存関係となるMOD IDとバージョン番号のマップ。
+  - これらのMODは本MODのロードに必須ではありませんが、依存関係MODが本MODより先にロードされるようMODリストの順序が強制的に変更されます。
+- `api_version`: MODがあなたのFunkin『コピーと互換性があるかを判断するためのバージョン番号。サポートしたいFriday Night Funkin』のバージョン番号に変更してください（執筆時点では`0.6.3`が推奨）。
+- `mod_version`: あなたのMOD専用のバージョン番号。任意のバージョンを選択するか、`1.0.0`のままにしておいてください。
+- `license`: MODの配布に使用するライセンス。[こちらから選択](https://opensource.org/licenses) するか、`Apache-2.0` のままにしておいてください。
 
-A Contributor has the following fields:
+Contributor（クレジット）には以下のフィールドがあります：
 
-- `name`: The contributor's name.
-- `role`: *(optional)* The role the contributor played, for example "Artist" or "Programmer"
-- `email`: *(optional)* A contact email
-- `url`: *(optional)* A homepage URL
+- `name`: クレジットの名前。
+- `role`: *(オプション)* クレジットの役割（例: 「Artist」や「Programmer」）。
+- `email`: *(オプション)* 連絡先メールアドレス。
+- `url`: *(オプション)* ホームページやX、YouTubeのURL。
 
-Many of these fields are intended to be used in the future by an upcoming Mod Menu interface, which will allow users to organize their mods.
+これらのフィールドの多くは、今後実装予定のModメニューインターフェースで使用されることを想定しています。このインターフェースにより、ユーザーは自身のMODを整理できるようになります。

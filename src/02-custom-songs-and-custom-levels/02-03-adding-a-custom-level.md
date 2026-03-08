@@ -1,10 +1,10 @@
-# Adding a Custom Level
+# カスタムレベルの追加
 
-Add a new file, with whatever internal name you like, into your mods folder, under the `data/levels/` directory, with the `.json` file extension.
+modsフォルダ内の`data/levels/`ディレクトリに、任意の内部名で新しいファイルを追加します。ファイル拡張子は`.json`にしてください。
 
-*NOTE*: Keep in mind that if your internal name is the same as a week from the base game, or of another mod, they will overlap each other and you may have unexpected results!
+*注意*: 内部名がベースゲームの週名や他のMODと重複すると、互いに干渉し予期せぬ結果を招く可能性がありますのでご注意ください！
 
-We'll end up with something like this.
+最終的には以下のような構成になります。
 
 ```
 -mods
@@ -28,7 +28,7 @@ We'll end up with something like this.
    |-_polymod_meta.json
 ```
 
-Your custom week's JSON file will look something like the following:
+カスタムウィークのJSONファイルは、以下のような形式になります：
 
 ```json
 {
@@ -72,16 +72,16 @@ Your custom week's JSON file will look something like the following:
 }
 ```
 
-There's a lot of info here! Let's break it down:
+ここには多くの情報があります！一つずつ見ていきましょう：
 
-- `version`: The version number for the Level data file format. Leave this at `1.0.0`.
-- `name`: The readable name for the Level, as displayed at the top right of the Story Menu.
-- `titleAsset`: The asset to use for the level name in the list of level, relative to the `images` folder in your mod folder.
-- `background`: The background to use for the level. `#F9CF51` is the classic yellow, but this field takes either a color code OR an image file path (relative to the `images` folder in your mod folder).
-- `songs`: A list of song IDs to include in the week.
-- `visible`: Whether this story level is visible in the Story Menu.
-- `props`: Data for the props to display on the Story Menu when the level is selected. For example, Week 1 will display Daddy Dearest, Boyfriend, and Girlfriend.
+- `version`: レベルデータファイル形式のバージョン番号。`1.0.0` のままにしておいてください。
+- `name`: ストーリーメニューの右上に表示される、レベルの見やすい名前。
+- `titleAsset`: レベル一覧でレベル名として使用するアセット。MODフォルダ内の `images` フォルダからの相対パスで指定します。
+- `background`: レベルで使用する背景色。`#F9CF51`がクラシックな黄色ですが、このフィールドにはカラーコードか画像ファイルパス（MODフォルダ内の`images`フォルダからの相対パス）のいずれかを指定します。
+- `songs`: 週に含める楽曲IDのリスト。
+- `visible`: ストーリーメニューにこのストーリーレベルを表示するかどうか。
+- `props`: レベル選択時にストーリーメニューに表示するプロップのデータ。例：第1週では「最愛のパパ」「彼氏」「彼女」が表示される。
 
-When the game starts, it queries the list of available levels by looking in the `data/levels` folder for JSON files, which it then uses to populate the Story Menu, and then the Freeplay Menu (in non-alphabetical views, songs in Freeplay appear in order by what level they are included in).
+ゲーム起動時、`data/levels`フォルダ内のJSONファイルを検索して利用可能なレベル一覧を取得し、ストーリーメニューとフリープレイメニューに反映します（アルファベット順以外の表示では、フリープレイの楽曲は収録されているレベル順に表示されます）。
 
-If you want your custom song to only show up in Freeplay, you can just create a custom week and set the `visible` property to false, and the songs will show up in Freeplay!
+カスタム楽曲をフリープレイ専用に表示させたい場合は、カスタム週を作成し`visible`プロパティをfalseに設定するだけで、楽曲がフリープレイに表示されます！

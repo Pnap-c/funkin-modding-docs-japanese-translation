@@ -1,25 +1,26 @@
-# Writing And Contributing to This Book
-This book is written in Markdown format, and uses [mdbook](https://rust-lang.github.io/mdBook/) for generation.
+# この本の執筆と貢献について
+本書はMarkdown形式で記述され、[mdbook](https://rust-lang.github.io/mdBook/)を用いて生成されています。
 
-The source files from which this book is generated can be found on [GitHub](https://github.com/FunkinCrew/funkin-modding-docs).
+本書の生成元となるソースファイルは[GitHub](https://github.com/FunkinCrew/funkin-modding-docs)で公開されています。
 
-## Things to Consider
+## 考慮すべき点
 
-- How should we handle explaining directory paths? The source code has some of the 
-assets split into libraries (`preload/`, `songs`, `shared`, etc.) however most people modding don't need to
-really mind the source code versions of asset paths. 
-- Currently [Chapter 10: Appending and merging Files](10-appending-and-merging-files/10-00-appending-and-merging-files.md) renders as "Chapter 5"
+- ディレクトリパスの説明をどう扱うべきか？ソースコードでは一部の
+アセットがライブラリ（`preload/`、`songs`、`shared`など）に分割されていますが、
+モッディングを行うほとんどの人は、ソースコード版のアセットパスを
+気にする必要はありません。
+- 現在、[第10章: ファイルの追加とマージ](10-appending-and-merging-files/10-00-appending-and-merging-files.md) が「第5章」と表示される問題
 
-### Style Guide
+### スタイルガイド
 
-#### Folder/Chapter Structure
+#### フォルダ/章の構造
 
-[SUMMARY.md](SUMMARY.md) is how `mdbook` generates the chapters, sub-chapters, of all the markdown files. In there you can see how the book is laid out in terms of it's content. 
+[SUMMARY.md](SUMMARY.md) は、`mdbook` がすべてのマークダウンファイルから章や小見出しを生成するための基盤です。このファイルでは、書籍の内容がどのように構成されているかを確認できます。
 
-Folder structure is entirely independant from content ordering, so we can organize generally how we please as long as [SUMMARY.md](SUMMARY.md) is pointing to the right files.
+フォルダ構造はコンテンツの順序とは完全に独立しているため、[SUMMARY.md](SUMMARY.md)が正しいファイルを指している限り、自由に整理できます。
 
-Folder names should be `{chapter number}-{chapter title}`, generally despite how long the `chapter title` may end up being
-From this guides source:
+フォルダ名は`{章番号}-{章タイトル}`とする必要があります。`章タイトル`が長くなる場合でも、基本的にこの形式に従ってください。
+このガイドのソースから：
 ```shell
 src/
     01-fundamentals/
@@ -28,8 +29,8 @@ src/
     ... // and so on...
 ```
 
-The main chapter page should be `{chapter number}-00-{chapter title}.md` in the chapter's folder.
-From this guides source:
+メインの章ページは、章のフォルダ内で `{chapter number}-00-{chapter title}.md` であるべきです。
+このガイドのソースから：
 ```shell
 src/
     01-fundamentals/
@@ -42,8 +43,8 @@ src/
     ...
 ```
 
-Then each successive sub-chapter should follow `{chapter number}-{sub-chapter number}-{subchapter title}.md`
-From this guides source:
+その後、各サブチャプターは `{chapter number}-{sub-chapter number}-{subchapter title}.md` の形式に従うべきです。
+このガイドのソースから：
 ```shell
 src/
     01-fundamentals/

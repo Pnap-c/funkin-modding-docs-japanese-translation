@@ -1,12 +1,12 @@
-# Using a Custom Sticker Pack
+# カスタムステッカーパックの使用
 
-There are two ways the game defines a given sticker pack to be used:
+ゲームが使用する特定のステッカーパックを定義する方法は2つあります：
 
-- Each [Playable Character](../05-custom-playable-characters/05-00-custom-playable-characters.md) defines the `stickerPack` variable, which specifies the sticker pack to be used by songs containing that character. For example, `bf` uses the `standard-bf` sticker pack. You can define a sticker pack to be used for your custom playable character by setting the `stickerPack` value, or modify which sticker pack is used by other playable characters by using [JSONPatch](../10-appending-and-merging-files/10-02-merging-files.md) to modify the `stickerPack` value of that character.
-- Each song has a value in its metadata to define which sticker pack is used. Set the `playData.stickerPack` on a song (or use JSONPatch to modify metadata of an existing song) to override which sticker pack it uses.
+- 各[プレイアブルキャラクター](../05-custom-playable-characters/05-00-custom-playable-characters.md)は`stickerPack`変数を定義し、そのキャラクターを含む楽曲で使用するステッカーパックを指定します。例えば`bf`は`standard-bf`ステッカーパックを使用します。カスタムプレイアブルキャラクター用に使用するステッカーパックを定義するには、`stickerPack`値を設定します。他のプレイアブルキャラクターが使用するステッカーパックを変更するには、[JSONPatch](../10-appending-and-merging-files/10-02-merging-files.md)を使用して該当キャラクターの`stickerPack`値を修正します。
+- 各楽曲のメタデータには使用するステッカーパックを定義する値があります。楽曲の`playData.stickerPack`を設定（または既存楽曲のメタデータをJSONPatchで変更）することで、使用するステッカーパックを上書きできます。
 
-The game checks and uses sticker packs in this order:
+ゲームは次の順序でステッカーパックを確認・使用します：
 
-- The sticker pack chosen by the song.
-- The sticker pack chosen by the playable character.
-- The `default` sticker pack (which displays only Boyfriend). If you see only Boyfriend during a sticker transition, then you know neither the song or the playable character defines a sticker pack, and you should fix the issue.
+- 楽曲が選択したステッカーパック
+- プレイアブルキャラクターが選択したステッカーパック
+- `default`ステッカーパック（ボーイフレンドのみ表示）。ステッカー切り替え時にボーイフレンドのみが表示される場合、楽曲もプレイアブルキャラクターもステッカーパックを定義していないため、問題を修正する必要があります。

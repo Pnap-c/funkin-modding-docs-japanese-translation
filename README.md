@@ -1,11 +1,11 @@
 # Funkin' Modding Docs
 
-## [READ THE DOCS HERE](https://funkincrew.github.io/funkin-modding-docs/)
+## [ここを押してWikiを見よう](https://funkincrew.github.io/funkin-modding-docs/)
 
-## Contributions
+## コントリビューション
 
-The Funkin' Modding Docs repository is accepting contributions via [Github](https://github.com/FunkinCrew/funkin-modding-docs/pulls).
+The Funkin Modding Docsリポジトリは、[Github](https://github.com/FunkinCrew/funkin-modding-docs/pulls)経由での貢献を受け付けています。
 
-## License
+## ライセンス
 
-This work is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+この作品はCC BY-SA 4.0ライセンスのもとで提供されています。このライセンスのコピーは、https://creativecommons.org/licenses/by-sa/4.0/ でご覧いただけます。

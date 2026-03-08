@@ -1,12 +1,12 @@
-# Asset Replacement and Additons
+# アセットの置換と追加
 
-## Asset Replacement
+## アセットの置換
 
-The key thing that Polymod allows you to do is to replace assets. This is done by adding those files to your mods folder in the same location as they would go.
+Polymodで可能な主な機能は、アセットの置換です。これは、置換したいファイルを、元のファイルと同じ場所にあるmodsフォルダに追加することで行います。
 
-For example, you can replace Girlfriend's sprites by placing your new sprites in the same location as they are in the `assets` folder, which would be `shared/images/characters/GF_assets.png`.
+例えば、ガールフレンドのスプライトを置換するには、新しいスプライトを`assets`フォルダ内の元のファイルと同じ場所（`shared/images/characters/GF_assets.png`）に配置します。
 
-In other words, structure your mod like so:
+MODの構造は以下のように構成してください：
 
 ```
 -assets
@@ -23,10 +23,10 @@ In other words, structure your mod like so:
 -Funkin.exe
 ```
 
-When the game goes to load a character's sprites, it will make a request internally to retrieve the `assets/shared/images/characters/GF_assets.png` file to use for the texture (and the corresponding `XML` to split the image into individual frames). When it does, Polymod intercepts that request and checks if there is a file of that name among the loaded mods, and if so, it will use that instead.
+ゲームがキャラクターのスプライトをロードする際、内部的に`assets/shared/images/characters/GF_assets.png`ファイルを取得するリクエストを発行し、そのテクスチャ（および画像を個々のフレームに分割するための対応する`XML`）を使用します。この時、Polymodはそのリクエストをインターセプトし、ロード済みのMOD内に同名のファイルが存在するか確認します。存在する場合、代わりにそのファイルを使用します。
 
-## Asset Additions
+## アセットの追加
 
-Polymod also allows you to add new files to the game. This is notable, as trying to place new files into the `assets` directory doesn't work, the game won't recognize those files.
+Polymodではゲームに新規ファイルを追加することも可能です。これは重要な点です。なぜなら、新規ファイルを`assets`ディレクトリに直接配置しても機能せず、ゲームはそれらのファイルを認識しないからです。
 
-The game still needs to get told to load those assets for them to get used, but there are many functions which load all the files in a given folder (such as the Song Registry, the Character Registry, the Stage Registry, etc). We'll look more into those later.
+これらのアセットを使用するには、ゲームに読み込みを指示する必要があります。ただし、特定のフォルダ内の全ファイルを読み込む機能（楽曲登録、キャラクター登録、ステージ登録など）が多数存在します。これらは後ほど詳しく見ていきます。

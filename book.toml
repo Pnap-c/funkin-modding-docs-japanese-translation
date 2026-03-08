@@ -1,11 +1,11 @@
 [book]
-authors = ["The Funkin' Crew Inc.", "EliteMasterEric"]
-language = "en"
+authors = ["The Funkin' Crew Inc.", "EliteMasterEric", "Pi"]
+language = "ja"
 multilingual = false
 src = "src"
-title = "Friday Night Funkin' Modding Documentation"
+title = "Friday Night Funkin' Modding ドキュメント 日本語版 (非公式)"
 
 
 [output.html]
-git-repository-url = "https://github.com/FunkinCrew/funkin-modding-docs/tree/main/"
-edit-url-template = "https://github.com/FunkinCrew/funkin-modding-docs/edit/main/{path}"
+git-repository-url = "https://github.com/Pnap-c/funkin-modding-docs-japanese-translation/tree/main"
+edit-url-template = "https://github.com/Pnap-c/funkin-modding-docs-japanese-translation/edit/main/{path}"

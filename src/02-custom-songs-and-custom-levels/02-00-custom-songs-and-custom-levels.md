@@ -1,6 +1,6 @@
-# Creating a Friday Night Funkin' Mod - Custom Songs and Custom Levels
+# Friday Night Funkin' MODの作成 - カスタム楽曲とカスタムステージ
 
-This chapter will walk you through the process of creating a functioning, fully compatible Friday Night Funkin' mod, using the game's official systems for loading custom content and scripts. Once your mod is complete, you will be able to place it in the `mods` folder in your game install and use its content in-game without overriding the base game content and still maintain compatibility with other mods.
+この章では、カスタムコンテンツとスクリプトを読み込むための公式システムを使用して、完全に互換性のある機能するFriday Night Funkin' MODを作成する手順を解説します。MODが完成したら、ゲームインストール先の`mods`フォルダに配置し、ベースゲームのコンテンツを上書きすることなくゲーム内でそのコンテンツを使用できます。他のMODとの互換性も維持されます。
 
-This chapter goes over adding new playable songs and Story Mode levels to the game.
+本章では、ゲームに新たなプレイ可能な楽曲とストーリーモードのステージを追加する方法について解説します。
 

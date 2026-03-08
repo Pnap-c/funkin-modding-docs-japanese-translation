@@ -1,6 +1,6 @@
-# Scripted Classes
+# スクリプト化クラス
 
-Funkin's implementation of HScript uses a system of scripted classes. To create a scripted class, create an `.hxc` file in your `mods/mymod/scripts/` folder, and, using Haxe syntax, create a new class which extends the base class for the type of object you are scripting, like so:
+Funkin の HScript 実装では、スクリプトクラスシステムを採用しています。スクリプトクラスを作成するには、`mods/mymod/scripts/` フォルダ内に `.hxc` ファイルを作成し、Haxe 構文を用いて、スクリプト化するオブジェクトのタイプに対応する基底クラスを継承する新しいクラスを作成します。例えば以下のように記述します：
 
 ```haxe
 // Remember to import each class you want to reference in your script!
@@ -18,42 +18,42 @@ class BallisticSong extends Song {
 }
 ```
 
-## List of Scriptable Classes
+## スクリプト対応クラスのリスト
 
-There is a predefined list of classes which the game has set up to be scriptable, and will automatically load and execute when relevant. More of these will be added in the future.
+ゲーム内でスクリプト対応として設定済みのクラスは事前に定義されたリストが存在し、関連する場面で自動的に読み込まれ実行されます。今後さらに追加される予定です。
 
-- `funkin.play.song.Song` for providing unique behavior to custom songs, including playing cutscenes and other stuff. See [Scripted Songs](21-scripted-classes/21-01-scripted-songs.md).
-	- See also [Video Cutscenes](21-scripted-classes/21-03-video-cutscenes.md), [Ingame Cutscenes](21-scripted-classes/21-04-ingame-cutscenes.md), and [Dialogue Cutscenes](21-scripted-classes/21-05-dialogue-cutscenes.md)
-- `funkin.play.character.BaseCharacter` for providing unique behavior to custom characters (such as playing custom animations in certain circumstances). See [Scripted Characters](21-scripted-classes/21-05-scripted-characters.md).
-	- Note that you need to choose the correct subclass of this class for the animation type of your character!
-	- `funkin.play.character.SparrowCharacter` is used for characters that have Sparrow spritesheet animations.
-	- `funkin.play.character.MultiSparrowCharacter` is used for characters that have several Sparrow spritesheet animations to combine into one character.
-	- `funkin.play.character.PackerCharacter` is used for characters that have Packer spritesheet animations.
-	- `funkin.play.character.AnimateAtlasCharacter` is used for characters that have Adobe Animate texture atlases.
-	- `funkin.play.character.BaseCharacter` has empty stubs for all the rendering and animation handlers, and is only useful for people who want to reimplement their character's animation system by hand.
-- `funkin.play.stage.Stage` for providing unique behavior to custom stages, such as creating custom moving props and defining when props animate or when sound effects play in sync with the stage. See [Scripted Stages](21-scripted-classes/24-06-scripted-stages.md).
-- `funkin.ui.story.Level` for providing unique behavior to levels in Story Mode. See [Scripted Story Levels](21-scripted-classes/25-07-scripted-story-levels.md).
-- `funkin.play.notes.notekind.NoteKind` for providing unique visuals and behavior to certain kinds of notes, which can then be placed in the Chart Editor. See [Custom Note Kinds](21-scripted-classes/26-00-custom-note-kinds.md).
-- `funkin.play.event.SongEvent` for creating custom Song Events, which you can place in the Chart Editor and which perform game actions when they are reached. See [Custom Song Events](21-scripted-classes/28-00-custom-note-kinds.md)
-- `funkin.ui.freeplay.charselect.PlayableCharacter` for providing unique behavior to custom playable characters. See [Scripted Playable Characters](21-scripted-classes/25-10-scripted-playable-characters.md)
-- `funkin.ui.freeplay.FreeplayStyle` for defining the sprites and colors used by the Freeplay menu when a given character is selected. See [WIP]
-- `funkin.play.notes.notestyle.NoteStyle` for modifying the behavior of custom note styles. See [WIP]
-- `funkin.play.cutscene.dialogue.Conversation` for providing unique behavior to custom dialogue conversations. See [Dialogue Cutscenes](21-scripted-classes/21-05-dialogue-cutscenes.md)
-- `funkin.play.cutscene.dialogue.DialogueBox` for providing unique behavior to custom dialogue boxes used in conversations. See [Dialogue Cutscenes](21-scripted-classes/21-05-dialogue-cutscenes.md)
-- `funkin.play.cutscene.dialogue.Speaker` for providing unique behavior to custom speakers used in conversations. See [Dialogue Cutscenes](21-scripted-classes/21-05-dialogue-cutscenes.md)
-- `funkin.ui.freeplay.Album` for defining custom behavior for Freeplay Albums. See [WIP]
+- `funkin.play.song.Song`：カスタム楽曲に独自の動作（カットシーン再生など）を提供するクラス。詳細は[スクリプト楽曲](21-scripted-classes/21-01-scripted-songs.md)を参照。
+    - 関連項目：[動画カットシーン](21-scripted-classes/21-03-video-cutscenes.md)、 [ゲーム内カットシーン](21-scripted-classes/21-04-ingame-cutscenes.md)、および[会話カットシーン](21-scripted-classes/21-05-dialogue-cutscenes.md)
+- `funkin.play.character.BaseCharacter`：カスタムキャラクターに固有の動作（特定の状況でのカスタムアニメーション再生など）を提供します。[Scripted Characters](21-scripted-classes/21-05-scripted-characters.md)を参照してください。
+    - キャラクターのアニメーションタイプに合ったこのクラスの正しいサブクラスを選択する必要があることに注意してください！
+	- `funkin.play.character.SparrowCharacter` は、Sparrow スプライトシートアニメーションを持つキャラクターに使用されます。
+    - `funkin.play.character.MultiSparrowCharacter` は、複数の Sparrow スプライトシートアニメーションを組み合わせて1つのキャラクターを作成する場合に使用されます。
+    - `funkin.play.character.PackerCharacter` は、Packer スプライトシートアニメーションを持つキャラクターに使用されます。
+	- `funkin.play.character.AnimateAtlasCharacter` は、Adobe Animate テクスチャアトラスを持つキャラクターに使用します。
+    - `funkin.play.character.BaseCharacter` は、すべてのレンダリングおよびアニメーションハンドラ用の空のスタブを持ち、キャラクターのアニメーションシステムを手作業で再実装したい場合にのみ有用です。
+- `funkin.play.stage.Stage`：カスタムステージに独自の動作を提供します。カスタム移動プロップの作成や、プロップのアニメーションタイミング、ステージと同期した効果音の再生タイミングの定義などが可能です。詳細は[スクリプトステージ](21-scripted-classes/24-06-scripted-stages.md)を参照してください。
+- `funkin.ui.story.Level`：ストーリーモードのレベルに独自の動作を提供します。詳細は[スクリプト化されたストーリーレベル](21-scripted-classes/25-07-scripted-story-levels.md)を参照してください。
+- `funkin.play.notes.notekind.NoteKind`：特定の種類のノートに独自のビジュアルと動作を提供し、チャートエディタに配置できるようにします。詳細は[カスタムノート種類](21-scripted-classes/26-00-custom-note-kinds.md)を参照してください。
+- `funkin.play.event.SongEvent`：カスタムソングイベントを作成します。チャートエディタに配置でき、到達時にゲームアクションを実行します。詳細は[カスタムソングイベント](21-scripted-classes/28-00-custom-note-kinds.md)を参照してください。
+- `funkin.ui.freeplay.charselect.PlayableCharacter`：カスタムプレイアブルキャラクターに独自の動作を提供します。詳細は[スクリプト対応プレイアブルキャラクター](21-scripted-classes/25-10-scripted-playable-characters.md)を参照
+- `funkin.ui.freeplay.FreeplayStyle`：特定のキャラクターが選択された際にフリープレイメニューで使用されるスプライトと色を定義します。詳細は[WIP](21-scripted-classes/25-10-freeplay-style.md)を参照
+- `funkin.play.notes.notestyle.NoteStyle`：カスタムノートスタイルの動作を変更します。[WIP]を参照
+- `funkin.play.cutscene.dialogue.Conversation`：カスタム対話シーンに独自の動作を提供します。[対話カットシーン](21-scripted-classes/21-05-dialogue-cutscenes.md)を参照
+- `funkin.play.cutscene.dialogue.DialogueBox`：会話で使用されるカスタムダイアログボックスに独自の動作を提供します。[ダイアログカットシーン](21-scripted-classes/21-05-dialogue-cutscenes.md)を参照
+- `funkin.play.cutscene.dialogue.Speaker`：会話で使用されるカスタムスピーカーに独自の動作を提供します。詳細は[ダイアログカットシーン](21-scripted-classes/21-05-dialogue-cutscenes.md)を参照
+- `funkin.ui.freeplay.Album`：フリープレイアルバムのカスタム動作を定義します。詳細は[WIP](21-scripted-classes/21-05-freeplay.ui.album.WIP.md)を参照
 
-There is also `funkin.modding.module.Module` for custom scripted Modules, which are scripts which receive events everywhere, rather than only in a specific context. See [Scripted Modules](30-scripted-modules/30-00-scripted-modules.md) for more information on how these work.
+カスタムスクリプトモジュール用の`funkin.modding.module.Module`も存在します。これは特定のコンテキスト内だけでなく、あらゆる場所でイベントを受信するスクリプトです。これらの動作の詳細については[スクリプトモジュール](30-scripted-modules/30-00-scripted-modules.md)を参照してください。
 
-There are also scripted classes are also set up to be scriptable, but will only be useful if they're accessed from another script. Expect more of these to be added in the future.
+スクリプト化可能なクラスも用意されていますが、他のスクリプトからアクセスされる場合にのみ有用です。今後さらに追加される予定です。
 
-- `funkin.graphics.FunkinSprite` for basic static or animated sprites.
-- `funkin.graphics.adobeanimate.FlxAtlasSprite` for generic sprites which use Adobe Animate texture atlases
-- `flixel.group.FlxSpriteGroup` for groups of sprites which are included inside a state and manipulated together
-- `funkin.ui.MusicBeatState` for groups of sprites which represents a given game state. Includes additional utilities for handling script events.
-- `funkin.ui.MusicBeatSubState` for groups of sprites representing a substate of an existing state
-- `flixel.addons.display.FlxRuntimeShader` for custom GLSL shaders
-- `funkin.play.stage.Bopper` for sprites which will play an idle animation to the beat of the music when they are part of a Stage.
-- `flixel.FlxSprite` for basic static or animated sprites. Use this only if you can't use FunkinSprite.
-- `flixel.FlxState` for basic groups of sprites which represent a given game state. Use this only if you can't use MusicBeatState.
-- `flixel.FlxSubState` for groups of sprites representing a substate of an existing state
+- `funkin.graphics.FunkinSprite`：基本的な静的またはアニメーション付きスプライト用。
+- `funkin.graphics.adobeanimate.FlxAtlasSprite`：Adobe Animateのテクスチャアトラスを使用する汎用スプライト用
+- `flixel.group.FlxSpriteGroup`：ステート内に含まれ一括操作されるスプライト群用
+- `funkin.ui.MusicBeatState`：特定のゲーム状態を表すスプライト群用。スクリプトイベント処理用の追加ユーティリティを含む
+- `funkin.ui.MusicBeatSubState`：既存状態のサブ状態を表すスプライト群用
+- `flixel.addons.display.FlxRuntimeShader`：カスタムGLSLシェーダー用
+- `funkin.play.stage.Bopper`：ステージの一部として音楽のリズムに合わせてアイドルアニメーションを再生するスプライト用
+- `flixel.FlxSprite`：基本的な静的またはアニメーション付きスプライト用。FunkinSpriteが使用できない場合のみ使用してください。
+- `flixel.FlxState`：特定のゲーム状態を表す基本的なスプライトグループ用。MusicBeatStateが使用できない場合のみ使用してください。
+- `flixel.FlxSubState`：既存の状態のサブ状態を表すスプライトグループ用

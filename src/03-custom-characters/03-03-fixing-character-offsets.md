@@ -1,24 +1,24 @@
-# Fixing Character Offsets
+# キャラクターのオフセット修正
 
-Uh Oh! Upon using your character in a song, you might have noticed that with each note hit, the character has weird offsets which makes it wobble back and forth. Let's fix that.
+おっと！キャラクターを楽曲で使用すると、音符を叩くたびにキャラクターが前後左右に揺れるような変なオフセットが発生していることに気づいたかもしれません。これを修正しましょう。
 
-## Accessing the Animation Editor
+## アニメーションエディタの起動方法
 
-To fix offsets for you character, you first have to access the Animation Editor tool. This can be found in-game by accessing the Debug menu from the main menu (this is bound to `~` by default) and selecting "Animation Editor" option.
+キャラクターのオフセットを修正するには、まずアニメーションエディタツールを起動する必要があります。ゲーム内でメインメニューからデバッグメニュー（デフォルトでは`~`キーに割り当て）を開き、「Animation Editor」を選択すると起動できます。
 
-Once you have accessed the tool, it might be a little overwhelming at first, but everything is pretty straightforward.
+ツールを起動すると最初は少し戸惑うかもしれませんが、操作は比較的直感的です。
 
-## Fixing the Offsets
+## オフセットの修正
 
-The first thing you have to do is click `2` on your keyboard to switch to `Animation Mode` in order to properly fix offsets for each animation. Then, you need to select your character from the `Character` section in the UI box that is located in the top-left corner.
+まず、各アニメーションのオフセットを適切に修正するために、キーボードの`2`キーを押して`アニメーションモード`に切り替えます。次に、画面左上にあるUIボックスの`キャラクター`セクションから対象キャラクターを選択します。
 
-*HINT:* The best thing to do to speed up your process, it to toggle `Onion Skin` mode by pressing `F`. This will show the previous animation played being half transparent. This can help speeding up the proccess, since you will be able to to properly line up the animation with the previous one.
+*ヒント:* 作業を効率化するには、`F`キーで`オニオンスキン`モードを切り替えるのが最適です。これにより、再生された前のアニメーションが半透明で表示されます。前のアニメーションと正確に合わせられるため、作業スピードアップに役立ちます。
 
-The UI will show you all of the possible controls and shortcuts, to make your proccess of fixing the character offsets much easier.
+UIには、キャラクターのオフセット修正作業を大幅に容易にする、利用可能なすべてのコントロールとショートカットが表示されます。
 
-## Saving Offsets
+## オフセットの保存
 
-Once you are happy with your result, simply press `ESC` on your keyboard to save the `Character Data` file.
-  - Currently there is a bug which makes the file saving system not automatically put character's ID in the file name, which you will have to do yourself. Simply name the file the ID of your character followed by `.json`.
+結果に満足したら、キーボードの `ESC` キーを押すだけで `Character Data` ファイルを保存できます。
+  - 現在、ファイル保存システムにバグがあり、ファイル名にキャラクターIDが自動で付加されません。手動でIDをファイル名に追加する必要があります。キャラクターIDに `.json` を付けてファイル名を設定してください。
 
-From the ["Creating a Character"](03-02-creating-a-character.md) chapter you will know, that you have to place this character data JSON file in `data/characters`. Then, you can simply use [Hot Reloading](../01-fundamentals/01-05-hot-reloading.md) to check the offsets without restarting the game.
+[「キャラクターの作成」](03-02-creating-a-character.md) の章で説明した通り、このキャラクターデータ JSON ファイルは `data/characters` ディレクトリに配置する必要があります。その後、[ホットリロード](../01-fundamentals/01-05-hot-reloading.md) を使用すれば、ゲームを再起動せずにオフセットを確認できます。

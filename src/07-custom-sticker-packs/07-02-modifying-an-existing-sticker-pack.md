@@ -1,8 +1,8 @@
-# Modifying an Existing Sticker Pack
+# 既存のステッカーパックの修正
 
-You can use the [JSONPatch](../10-appending-and-merging-files/10-02-merging-files.md) feature to add or remove stickers from an existing sticker pack.
+[JSONPatch](../10-appending-and-merging-files/10-02-merging-files.md) 機能を使用して、既存のステッカーパックからステッカーを追加または削除できます。
 
-For example, to add to Boyfriend's standard sticker pack, you can use the following JSON Patch file (placed in `mods/mymod/_merge/data/stickerpacks/standard-bf.json`, use a different file path to patch a different sticker pack):
+例えば、ボーイフレンドの標準ステッカーパックに追加するには、以下のJSON Patchファイルを使用できます（`mods/mymod/_merge/data/stickerpacks/standard-bf.json`に配置。別のステッカーパックをパッチする場合は異なるファイルパスを使用してください）：
 
 ```jsonc
 [

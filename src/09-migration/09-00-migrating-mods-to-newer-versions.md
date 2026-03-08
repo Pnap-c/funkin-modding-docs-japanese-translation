@@ -1,5 +1,5 @@
-# Creating a Friday Night Funkin' Mod - Migrating Mods to Newer Versions
+# Friday Night Funkin' MODの作成 - MODの新バージョンへの移行
 
-Occasionally, in order to make improvements to the modding system for Friday Night Funkin', the team has to make breaking changes to features that older mods were using, causing them to have unexpected beahavior or otherwise no longer function properly. When we do this, we update the API version rule, automatically flagging any older mods and preventing them from being loaded to ensure the stability of the game.
+Friday Night Funkin' のMODシステムを改善するため、チームは時折、古いMODが使用していた機能に互換性を損なう変更を加える必要があります。これにより、古いMODは予期せぬ動作をしたり、正しく機能しなくなったりすることがあります。このような変更を行う際、APIバージョンのルールを更新し、古いMODを自動的にフラグ付けして読み込みを防止することで、ゲームの安定性を確保します。
 
-This chapter will walk you through the process of making older mods compatible with newer versions of Friday Night Funkin'. Once you compete the steps in this guide, your mod should function as expected on newer versions.
+本章では、古いMODを新しいバージョンのFriday Night Funkin'と互換性を持たせる手順を解説します。このガイドの手順を完了すれば、MODは新しいバージョンで期待通りに動作するはずです。
